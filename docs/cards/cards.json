@@ -1,0 +1,21 @@
+{
+  /* Holi, vengo de visita a saludar, que tal? Holi*/
+  "clusters": [
+    {
+      "title": "AWS Cluster",
+      "vendor": "AWS"
+    },
+    {
+      "title": "Azure Cluster",
+      "vendor": "Azure"
+    },
+    {
+      "title": "GPC Cluster",
+      "vendor": "GPC"
+    },
+    {
+      "title": "AWS Cluster",
+      "vendor": "AWS"
+    }
+  ]
+}
