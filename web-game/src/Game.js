@@ -1,50 +1,82 @@
 export const SyGame = {
   setup: () => ({
-    cells: Array(9).fill(null),
-    counters: Array(2).fill(0),
     board: Array(2).fill([]),
     hand: Array(2).fill([]),
-    deck: BuildDeck()
+    deck: buildDeck()
   }),
 
   turn: {
-    minMoves: 1,
-    maxMoves: 1,
-  },
-
-  moves: {
-    playCard: ({ G, playerID }, card) => {
+    onBegin: ({ G, ctx, events }) => {
+      events.setActivePlayers({ currentPlayer: 'draw' })
     },
-    drawCard: ({ G, playerID }, card) => {
-      G.hand[playerID].push(ContainerCard())
-      console.log("foo")
-    },
+    stages: {
+      draw: {
+        moves: { drawCard },
+        next: 'play',
+      },
+      play: {
+        moves: { playCard },
+      },
+    }
   },
 
   endIf: ({ G, ctx }) => {
-    if (G.counters[ctx.currentPlayer] === 3) {
+    if (G.deck.length === 0) {
       return { winner: ctx.currentPlayer };
     }
   },
 
 };
 
-function BuildDeck() {
+function drawCard({ G, playerID, events }, card) {
+  G.hand[playerID].push(G.deck.pop());
+  events.endStage();
+}
+
+function playCard({ G, playerID, events }, card) {
+  card.actions.forEach(action => {
+    processAction({ G, playerID, events}, 'on_played', action, card);
+  });
+
+  events.endTurn();
+}
+
+function processAction({ G, playerID, events }, when, action, card) {
+  if ( action.when !== when ) { return; }
+
+  switch(action.type) {
+    case 'place': action_Place({ G, playerID, events}, action, card); break;
+    default: break;
+  }
+}
+
+function action_Place({ G, playerID, events}, action, card) {
+  G.hand[playerID] = G.hand[playerID].filter(function(e) { return e.index !== card.index })
+  G.board[playerID].push(card);
+}
+
+function buildDeck() {
   let deck = []
   for(var i = 0; i < 10; i++){
-    deck.push(ContainerCard());
+    deck.push(buildContainerCard(i));
   }
   return deck;
 }
 
-function ContainerCard(){
+function buildContainerCard(index){
   return {
-    // id: "container"
-    title: "Container",
-    description: "Place on your board",
-    points: 1,
-    // Card type
-    // How this card is played (Board, card, blabla)
-    // Callbacks container_onPlayed
-  }
+    "index": index,
+    "id": "aws_cluster",
+    "title": "AWS Cluster",
+    "description": "Place on your board",
+    "units": 2,
+    "vendor": "AWS",
+    "type": "cluster",
+    "actions": [
+      {
+        "when": "on_played",
+        "type": "place"
+      }
+    ]
+  };
 }

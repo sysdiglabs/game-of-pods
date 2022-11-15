@@ -75,7 +75,7 @@ const sectionStyle = {
 
 function UpsideCard(card, onClick){
   return (
-    <div style={cardStyle} onClick={() => onClick()}>
+    <div style={cardStyle} onClick={onClick}>
       <img src="http://placekitten.com/100/100" alt="card illustration"/>
       <div><b>{card.title}</b></div>
       <div>{card.description}</div>
@@ -85,5 +85,5 @@ function UpsideCard(card, onClick){
 }
 
 function DownCard(card, onClick){
-  return <div style={cardStyle} onClick={() => onClick()} />
+  return <div style={cardStyle} onClick={onClick} />
 }
