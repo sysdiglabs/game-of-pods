@@ -1,4 +1,4 @@
-{
+{"cards": 
   [
     {
       "id": "aws_cluster",
@@ -6,7 +6,13 @@
       "description": "Place on your board",
       "units": 2,
       "vendor": "AWS",
-      "type": "cluster"
+      "type": "cluster",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "place"
+        }
+      ]
     },
     {
       "id": "aws_cluster",
@@ -14,23 +20,41 @@
       "description": "",
       "units": 2,
       "vendor": "Azure",
-      "type": "cluster"
+      "type": "cluster",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "place"
+        }
+      ]
     },
     {
       "id": "aws_cluster",
-      "title": "GPC Cluster",
+      "title": "Google Cloud Cluster",
       "description": "",
       "units": 2,
       "vendor": "GPC",
-      "type": "cluster"
+      "type": "cluster",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "place"
+        }
+      ]
     },
     {
-      "id": "aws_cluster",
-      "title": "AWS Cluster",
+      "id": "openshift_cluster",
+      "title": "OpenShift Cluster",
       "description": "",
       "units": 2,
       "vendor": "AWS",
-      "type": "cluster"
+      "type": "cluster",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "place"
+        }
+      ]
     },
     {
       "id": "aws_vulnerability",
@@ -41,12 +65,516 @@
       "actions": [
         {
           "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["Azure","GPC","OpenShift"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "azure_vulnerability",
+      "title": "Exploit Aruze vulnerability",
+      "description": "",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["Azure"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","GPC","OpenShift"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "gpc_vulnerability",
+      "title": "Exploit Google Cloud vulnerability",
+      "description": "",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["GPC"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","Azure","OpenShift"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "openshift_vulnerability",
+      "title": "Exploit OpenShift vulnerability",
+      "description": "",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","Azure","GPC"]
+            }
+
+        }
+      ]
+    },
+    {
+      "id": "aws_azure_vulnerability",
+      "title": "Exploit AWS/Azure vulnerability",
+      "description": "",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS","Azure"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["GPC","OpenShift"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "aws_gpc_vulnerability",
+      "title": "Exploit AWS/Google Cloud vulnerability",
+      "description": "",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS","GPC"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["Azure","OpenShift"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "aws_openshift_vulnerability",
+      "title": "Exploit AWS/OpenShift vulnerability",
+      "description": "",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS","OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["Azure","GPC"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "aws_openshift_vulnerability",
+      "title": "Exploit AWS/OpenShift vulnerability",
+      "description": "",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS","OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["Azure","GPC"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "azure_openshift_vulnerability",
+      "title": "Exploit Azure/OpenShift vulnerability",
+      "description": "",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["Azure","OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","GPC"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "gpc_openshift_vulnerability",
+      "title": "Exploit Google Cloud/OpenShift vulnerability",
+      "description": "",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["GPC","OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","Azure"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "gpc_azure_vulnerability",
+      "title": "Exploit Google Cloud/Azure vulnerability",
+      "description": "",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["GPC","Azure"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","OpenShift"]
+            }
+        }
+      ]
+    },
+    {
+      "id": "cloud_ofuscation",
+      "title": "Cloud Ofuscation",
+      "description": "Your security team has implemented a set of actions to prevent fingerprinting of your clusters. All the cluster cards are again hidden and you can shuffle them.",
+      "units": 2,
+      "type": "defense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "hide",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "shuffle",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        }
+      ]
+    },
+    {
+      "id": "cloud_migration",
+      "title": "Cloud Migration",
+      "description": "Your infra team has managed a migration to another cloud provder. You can exchange one of your cluster cards for one of another player.",
+      "units": 2,
+      "type": "defense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "exchange",
+          "mine": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "other":
+            {
+            "who": "others",
+            "type": ["cluster"],
+            "select": "one"
+            }
+          }
+      ]
+    },
+    {
+      "id": "external_auditory",
+      "title": "External Auditory",
+      "description": "With the help of an external auditor, you implemented several security compliance. You will not receive damages in your clusters for in the next round.",
+      "units": 2,
+      "type": "defense",
+      "actions": [
+        {
+          "when": "always",
+          "type": "protect",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_new_turn",
+          "type": "autodestruct"
+        }
+      ]
+    },
+    {
+      "id": "falco",
+      "title": "Falco",
+      "description": "You install Falco in your clusters for runtime security. Whenever one of your clusters is destroyed, draw a card.",
+      "units": 2,
+      "type": "tech",
+      "label": ["opensource"],
+      "actions": [
+        {
+          "when": "on_my_cluster_remove",
+          "type": "draw"
+        }
+      ]
+    },
+    {
+      "id": "sysdig_secure",
+      "title": "Sysdig Secure",
+      "description": "You contract Sysdig Secure. At the start of your turn, if you have any face up clusters, shuffle your clusters and put them face down.",
+      "units": 2,
+      "type": "tech",
+      "label": ["sysdig"],
+      "actions": [
+        {
+          "when": "on_new_turn",
+          "type": "hide",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_new_turn",
+          "type": "shuffle",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        }
+      ]
+    },
+    {
+      "id": "melon_usk",
+      "title": "Melon Usk",
+      "description": "A billionaire buys the cloud, and while trying to reduce costs, destroys all microservices.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["corporation"],
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "all",
+              "type": ["tech"],
+              "label": ["microservice"],
+              "select": "all"
+            }
+        }
+      ]
+    },
+    {
+      "id": "bill_gates",
+      "title": "Bill Gates",
+      "description": "Reveal all Azure clusters of your opponents. Also, when you destroy an cluster that is not in Azure, draw a card.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["corporation"],
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "vendor": ["AWS","GPC","OpenShift"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_destroy",
+          "type": "action_if_true",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "vendor": ["AWS","GPC","OpenShift"]
+            },
+          "action": "draw"
+        }
+      ]
+    },
+    {
+      "id": "jeff_bezos",
+      "title": "Jeff Bezos",
+      "description": "Reveal all AWS clusters of your opponents. Also, every turn, you can discard a card and draw a new one.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["corporation"],
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "vendor": ["Azure","GPC","OpenShift"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_new_turn_optional",
+          "type": "discard_and_draw",
+          "target": 
+            {
+              "who": "others",
+              "type": ["tech","celebrity","offense","defense"],
+              "select": "one"
+            }
+        }
+      ]
+    },
+    {
+      "id": "linus_torvalds",
+      "title": "Linus Torvalds",
+      "description": "All corporation cards played by other players are removed.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["opensource"],
+      "actions": [
+        {
+          "when": "on_played",
           "type": "remove",
           "target": 
             {
               "who": "others",
-              "type": "cluster",
-              "vendor": "AWS"
+              "type": ["tech","celebrity","offense","defense"],
+              "select": "all"
             }
         }
       ]
