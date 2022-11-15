@@ -39,8 +39,12 @@ function BuildDeck() {
 
 function ContainerCard(){
   return {
+    // id: "container"
     title: "Container",
     description: "Place on your board",
     points: 1,
+    // Card type
+    // How this card is played (Board, card, blabla)
+    // Callbacks container_onPlayed
   }
 }

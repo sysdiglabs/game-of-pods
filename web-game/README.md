@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installing reqs.
+
+Install nvm
+
+`brew install nvm`
+
+Remember to follow the steps to add nvm to your .zshrc
+
+Install boardgame.io
+
+`npm install boardgame.io`
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,21 +1,55 @@
 {
-  /* Holi, vengo de visita a saludar, que tal? Holi*/
-  "clusters": [
+  [
     {
+      "id": "aws_cluster",
       "title": "AWS Cluster",
-      "vendor": "AWS"
+      "description": "Place on your board",
+      "units": 2,
+      "vendor": "AWS",
+      "type": "cluster"
     },
     {
+      "id": "aws_cluster",
       "title": "Azure Cluster",
-      "vendor": "Azure"
+      "description": "",
+      "units": 2,
+      "vendor": "Azure",
+      "type": "cluster"
     },
     {
+      "id": "aws_cluster",
       "title": "GPC Cluster",
-      "vendor": "GPC"
+      "description": "",
+      "units": 2,
+      "vendor": "GPC",
+      "type": "cluster"
     },
     {
+      "id": "aws_cluster",
       "title": "AWS Cluster",
-      "vendor": "AWS"
+      "description": "",
+      "units": 2,
+      "vendor": "AWS",
+      "type": "cluster"
+    },
+    {
+      "id": "aws_vulnerability",
+      "title": "Exploit AWS vulnerability",
+      "description": "",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "others",
+              "type": "cluster",
+              "vendor": "AWS"
+            }
+        }
+      ]
     }
   ]
 }
