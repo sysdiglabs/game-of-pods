@@ -14,7 +14,7 @@ templatePath = "templates/"
 templateFile = templatePath + "card_template.svg"
 imagesPath = "../../card-images/"
 exportsPath = "exports/"
-pngPath = exportsPath + "pngs/"
+pngsPath = exportsPath + "pngs/"
 svgsPath = exportsPath + "svgs/"
 
 ## END VARS ##
