@@ -11,7 +11,8 @@ from reportlab.graphics import renderPDF
 
 cardsDefinitionFile = "cards.json"
 templatePath = "templates/"
-templateFile = templatePath + "card_template.svg"
+cardTemplateFile = templatePath + "card_template.svg"
+clusterTemplateFile = templatePath + "cluster_template.svg"
 imagesPath = "../../card-images/"
 exportsPath = "exports/"
 pngsPath = exportsPath + "pngs/"
@@ -59,16 +60,19 @@ def getCards():
         return cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels
 
 def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels):
-    templateLoader = jinja2.FileSystemLoader(searchpath=".")
-    templateEnv = jinja2.Environment(loader=templateLoader)
-    template = templateEnv.get_template(templateFile)
-
     for numCard in range(numberOfCards):
+        templateLoader = jinja2.FileSystemLoader(searchpath=".")
+        templateEnv = jinja2.Environment(loader=templateLoader)
+        if cardType[numCard] == "cluster":
+            template = templateEnv.get_template(clusterTemplateFile)
+        else: 
+            template = templateEnv.get_template(cardTemplateFile)
+
         imageFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".svg"
         pngFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".png"
         imageFilePath = svgsPath + imageFile
         pngFilePath = pngsPath + pngFile
-        # print(cardLabels)
+        
         content = template.render(
             title = cardTitle[numCard],
             description = cardDescription[numCard],

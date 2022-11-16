@@ -902,7 +902,7 @@
     {
       "id": "paul_cormier",
       "title": "Paul Cormier",
-      "description": "When Paul enters the cloud, steal up to 2 clusters. You can not steal a player last cluster. At the start of your turn, if you control 2 or less clusters, destroy all your clusters.",
+      "description": "When Paul enters the cloud, steal up to 2 clusters. You can't steal a player last cluster. At the start of your turn, if you control 2 or less clusters, you lose.",
       "units": 1,
       "type": "celebrity",
       "label": ["opensource"]
