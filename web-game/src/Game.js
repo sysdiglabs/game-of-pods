@@ -30,7 +30,9 @@ export const SyGame = {
 
 function drawCard({ G, playerID, events }, card) {
   G.hand[playerID].push(G.deck.pop());
-  events.endStage();
+  if (G.hand[playerID].length >= 5) {
+    events.endStage();
+  }
 }
 
 function playCard({ G, playerID, events }, card) {
@@ -57,7 +59,7 @@ function action_Place({ G, playerID, events}, action, card) {
 
 function buildDeck() {
   let deck = []
-  for(var i = 0; i < 10; i++){
+  for(var i = 0; i < 50; i++){
     deck.push(buildContainerCard(i));
   }
   return deck;

@@ -17,21 +17,29 @@ export function SyBoard({ ctx, G, moves }) {
 
   let board0 = [];
   G.board[0].forEach((card) => {
-    board0.push(UpsideCard(card, () => onPlayCard(card) ));
+    board0.push(UpsideCard(card, null ));
   });
   let hand0 = [];
   G.hand[0].forEach((card) => {
-    hand0.push(UpsideCard(card,  () => onPlayCard(card) ));
+    if (ctx.currentPlayer === "0") {
+      hand0.push(UpsideCard(card, () => onPlayCard(card) ));
+    } else {
+      hand0.push(DownCard(card, null));
+    }
   });
 
   let board1 = [];
   G.board[1].forEach((card) => {
-    board1.push(UpsideCard(card, () => onPlayCard(card) ));
+    board1.push(UpsideCard(card, null ));
   });
 
   let hand1 = [];
   G.hand[1].forEach((card) => {
-    hand1.push(DownCard(card, null));
+    if (ctx.currentPlayer === "1") {
+      hand1.push(UpsideCard(card, () => onPlayCard(card) ));
+    } else {
+      hand1.push(DownCard(card, null));
+    }
   });
 
   let deck = [];
@@ -40,15 +48,15 @@ export function SyBoard({ ctx, G, moves }) {
   return (
     <div>
       <div id="board-1">
-        <div style={sectionStyle}>{board0}</div>
-        <div style={sectionStyle}>{hand0}</div>
+        <div style={sectionStyle}><p>Player 0 board</p>{board0}</div>
+        <div style={sectionStyle}><p>Player 0 hand</p>{hand0}</div>
       </div>
       <div id="board-2">
-        <div style={sectionStyle}>{board1}</div>
-        <div style={sectionStyle}>{hand1}</div>
+        <div style={sectionStyle}><p>Player 1 board</p>{board1}</div>
+        <div style={sectionStyle}><p>Player 1 hand</p>{hand1}</div>
       </div>
       <div id="deck">
-        <div style={sectionStyle}>{deck}</div>
+        <div style={sectionStyle}><p>Deck</p>{deck}</div>
       </div>
       {winner}
     </div>
