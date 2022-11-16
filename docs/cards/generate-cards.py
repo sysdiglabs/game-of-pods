@@ -3,18 +3,24 @@ import argparse
 import importlib
 import shutil
 import json
-from jinja2 import Environment, PackageLoader, select_autoescape
+import jinja2
 
 ## VARS ##
 
 cardsDefinitionFile = "cards.json"
-templatePath = "./templates"
+templatePath = "templates/"
+templateFile = templatePath + "cards-template.md"
 
 ## END VARS ##
 
 ## FUNCTIONS ##
 
 def getCards():
+    cardTitle = []
+    cardDescription = []
+    cardType = []
+    cardId = []
+
     with open(cardsDefinitionFile, 'r') as cards:
         cardsFile = json.loads(cards.read())
         numberOfCards = len(cardsFile['cards'])
@@ -23,15 +29,43 @@ def getCards():
         for numCard in range(numberOfCards):
             id = cardsFile['cards'][numCard]['id']
             #print(id)
-            cardTitle = cardsFile['cards'][numCard]['title']
-            cardDescription = cardsFile['cards'][numCard]['description']
-            cardType = cardsFile['cards'][numCard]['type']
-            print(cardTitle)
-            print(cardDescription)
-            print(cardType)
+            cTitle = cardsFile['cards'][numCard]['title']
+            cDescription = cardsFile['cards'][numCard]['description']
+            cType = cardsFile['cards'][numCard]['type']
+            
+            cardTitle.append(cTitle)
+            cardDescription.append(cDescription)
+            cardType.append(cType)
+            cardId.append(id)
+            #print(cardTitle)
+            #print(cardDescription)
+            #print(cardType)
+        return cardTitle, cardDescription, cardType, numberOfCards, cardId
 
-def renderCards():
-    templateEngine = Environment(loader=PackageLoader('templates', args.templatePath), autoescape=select_autoescape())
+def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
+    #templateEngine = Environment(loader=PackageLoader('templates', templatePath), autoescape=select_autoescape())
+    #template = templateEngine.get_template('cards-template.md')
+    templateLoader = jinja2.FileSystemLoader(searchpath="./templates")
+    templateEnv = jinja2.Environment(loader=templateLoader)
+    template = templateEnv.get_template(templateFile)
+
+    for numCard in range(numberOfCards):
+        fileName = "card_" + cardId[numCard] + "_" + numCard + ".svc"
+        content = template.render(
+            title = cardTitle,
+            description = cardDescription,
+            type = cardType
+        )
+        with open(fileName, mode="w", encoding="utf-8") as text:
+            text.write(content)
+            print("wrote..." + fileName)
+
+    #output = template.render()
+    #print(output)
+
+
+
+
 
 
 def main():
@@ -48,8 +82,9 @@ def main():
 #    except:
 #        parser.print_help()
 #        exit(1)
-
-    getCards()
+    
+    cardTitle, cardDescription, cardType, numberOfCards, cardId = getCards()
+    renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId)
 
     
 ## END FUNCTIONS ##
