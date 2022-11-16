@@ -61,11 +61,13 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
             type = cardType[numCard],
             cId = cardId[numCard]
         )
-        with open(imageFilePath, mode="w", encoding="utf-8") as text:
-            text.write(content)
-            print("wrote..." + imageFilePath)
-
-        #exportPdf(pdfFilePath,imageFilePath)
+        try: 
+            with open(imageFilePath, mode="w", encoding="utf-8") as text:
+                text.write(content)
+                print("wrote..." + imageFilePath)
+            #exportPdf(pdfFilePath,imageFilePath)
+        except: 
+            print("WARNING: Missing file " + imageFilePath + "!")
 
 def checkImages(cardId):
     image = imagesPath + cardId + ".png"
