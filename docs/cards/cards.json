@@ -931,8 +931,8 @@
       ]
     },
     {
-      "id": "matt_hicks",
-      "title": "Matt Hicks",
+      "id": "paul_cormier",
+      "title": "Paul Cormier",
       "description": "When it enters the cloud, steal up to two clusters from opponents of your choice. You can not steal their last cluster. Quorum: In your next turn, if you control 2 or less clusters, destroy all your clusters.",
       "units": 1,
       "type": "celebrity",
@@ -1038,7 +1038,7 @@
       "type": "event"
     },
     {
-      "id": "cloud-misconfiguration",
+      "id": "cloud_misconfiguration",
       "title": "Cloud Misconfiguration",
       "description": "The cloud providers messed up the configuration and mixed clusters from different customers. Shuffle all the clusters in play. Each player plays them face down. Each player reveals one cluster",
       "units": 1,
