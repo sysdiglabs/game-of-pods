@@ -516,6 +516,20 @@
       ]
     },
     {
+      "id": "brute_force_attack",
+      "title": "Brute Force Attack",
+      "description": "Destroy one tech of your choice from an opponent.",
+      "units": 2,
+      "type": "offense"
+    },
+    {
+      "id": "ransomware",
+      "title": "Ransomware",
+      "description": "An opponent may destroy a cluster he controls. If he doesn't, he skips his next turn.",
+      "units": 2,
+      "type": "offense"
+    },
+    {
       "id": "cloud_ofuscation",
       "title": "Cloud Ofuscation",
       "description": "Your security team has implemented a set of actions to prevent fingerprinting of your clusters. All the cluster cards are again hidden and you can shuffle them.",
@@ -636,6 +650,14 @@
       ]
     },
     {
+      "id": "falco_sidekick",
+      "title": "Falco Sidekick",
+      "description": "If you have the Falco Tech card, whenever one of your clusters is destroyed, you might discard a card. If you do so, put the destroyed cluster back into the cloud.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource","microservice"]
+    },
+    {
       "id": "sysdig_secure",
       "title": "Sysdig Secure",
       "description": "You contract Sysdig Secure. At the start of every round, if you have any face up clusters, shuffle your clusters and put them face down.",
@@ -735,7 +757,47 @@
       "description": "You use Helm to automate your deployments. At the start of your turn, an opponent of your choice reveals a cluster.",
       "units": 1,
       "type": "tech",
-      "label": ["sysdig"]
+      "label": ["opensource"]
+    },
+    {
+      "id": "spring",
+      "title": "Spring",
+      "description": "When you have Spring in your cloud, you can pick one card from the discard pile. If you do so, skip your drawing step.",
+      "units": 1,
+      "type": "tech",
+      "label": ["java","microservice"]
+    },
+    {
+      "id": "terraform",
+      "title": "Terraform",
+      "description": "Once per turn, you may discard a card. If you do so, draw a card.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource"]
+    },
+    {
+      "id": "promcat",
+      "title": "PromCat.io",
+      "description": "You use the Prometheus exporters in PromCat.io to improve your observability with Prometheus. Discard effects no longer affect you.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource", "sysdig"]
+    },
+    {
+      "id": "postgresql",
+      "title": "PostgreSQL",
+      "description": "Once per turn, you may discard your hand. Shuffle the discard pile back into the deck. Draw back the number of cards you discarded.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource", "database"]
+    },
+    {
+      "id": "honeypot",
+      "title": "Honeypot",
+      "description": "Your security team has set up a honeypot to catch hackers. If one of your clusters is going to be destroyed, destroy the honeypot instead.",
+      "units": 1,
+      "type": "tech",
+      "label": []
     },
     {
       "id": "melon_usk",
