@@ -80,6 +80,10 @@
             {
               "vendor": ["Azure","GPC","OpenShift"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -107,6 +111,10 @@
             {
               "vendor": ["AWS","GPC","OpenShift"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -134,6 +142,10 @@
             {
               "vendor": ["AWS","Azure","OpenShift"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -161,7 +173,10 @@
             {
               "vendor": ["AWS","Azure","GPC"]
             }
-
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -189,6 +204,10 @@
             {
               "vendor": ["GPC","OpenShift"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -216,6 +235,10 @@
             {
               "vendor": ["Azure","OpenShift"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -243,6 +266,10 @@
             {
               "vendor": ["Azure","GPC"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -270,6 +297,10 @@
             {
               "vendor": ["Azure","GPC"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -297,6 +328,10 @@
             {
               "vendor": ["AWS","GPC"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -324,6 +359,10 @@
             {
               "vendor": ["AWS","Azure"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -351,6 +390,128 @@
             {
               "vendor": ["AWS","OpenShift"]
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "phishing",
+      "title": "Phishing attack",
+      "description": "You perform a phishing attack to an opponent that you choose. You steal a random card from other player's hand.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "steal",
+          "target": 
+            {
+              "who": "another",
+              "type": ["tech","celebrity","defense","offense"],
+              "select": "one"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "stolen_credentials",
+      "title": "Stolen Credentials",
+      "description": "You manage to get the cloud credentials from one of your opponent. You steal a tech card from other player's hand.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "steal",
+          "target": 
+            {
+              "who": "another",
+              "type": ["tech"],
+              "select": "one"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "sql_injection",
+      "title": "SQL Injection",
+      "description": "You perform a SQL Injection attack to an opponent that you choose. You destroy all his/her databases cards.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "another",
+              "type": ["tech","celebrity"],
+              "label": ["database"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "supply_chain",
+      "title": "Supply Chain Attack",
+      "description": "You perform a supply chain attack to an opponent that you choose. You destroy all his/her open source cards.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "another",
+              "type": ["tech","celebrity"],
+              "label": ["opensource"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "log4j",
+      "title": "Log4J",
+      "description": "A massive vulnerability appears in Java affecting all the players (you included). All Java cards are destroyed.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "all",
+              "type": ["tech"],
+              "label": ["java"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -380,6 +541,10 @@
               "type": ["cluster"],
               "select": "all"
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -405,6 +570,10 @@
             "type": ["cluster"],
             "select": "one"
             }
+          },
+          {
+            "when": "on_played",
+            "type": "autodestroy"
           }
       ]
     },
@@ -412,6 +581,7 @@
       "id": "external_auditory",
       "title": "External Auditory",
       "description": "With the help of an external auditor, you implemented several security compliance. You will not receive damages in your clusters for in the next round.",
+
       "units": 2,
       "type": "defense",
       "actions": [
@@ -427,7 +597,28 @@
         },
         {
           "when": "on_new_turn",
-          "type": "autodestruct"
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "mfa",
+      "title": "MFA",
+      "description": "You enforce Multi-Factor Authentication on all your cloud accounts. You can draw two extra cards.",
+      "units": 2,
+      "type": "defense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "draw"
+        },
+        {
+          "when": "on_played",
+          "type": "draw"
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -435,7 +626,7 @@
       "id": "falco",
       "title": "Falco",
       "description": "You install Falco in your clusters for runtime security. Whenever one of your clusters is destroyed, draw a card.",
-      "units": 2,
+      "units": 1,
       "type": "tech",
       "label": ["opensource"],
       "actions": [
@@ -448,8 +639,8 @@
     {
       "id": "sysdig_secure",
       "title": "Sysdig Secure",
-      "description": "You contract Sysdig Secure. At the start of your turn, if you have any face up clusters, shuffle your clusters and put them face down.",
-      "units": 2,
+      "description": "You contract Sysdig Secure. At the start of every round, if you have any face up clusters, shuffle your clusters and put them face down.",
+      "units": 1,
       "type": "tech",
       "label": ["sysdig"],
       "actions": [
@@ -476,6 +667,46 @@
       ]
     },
     {
+      "id": "mongo_db",
+      "title": "MongoDB",
+      "description": "MongoDB changes its license to a non open source one. Ech round an opponent of your choice reveals a cluster card in his/her hand.",
+      "units": 1,
+      "type": "tech",
+      "label": ["microservice","database"],
+      "actions": [
+        {
+          "when": "on_new_turn",
+          "type": "reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            }
+        }
+      ]
+    },
+    {
+      "id": "nginx",
+      "title": "NGINX",
+      "description": "Your tech cards cannot be destroyed.",
+      "units": 1,
+      "type": "tech",
+      "label": ["microservice"],
+      "actions": [
+        {
+          "when": "always",
+          "type": "protect",
+          "target": 
+            {
+              "who": "me",
+              "type": ["tech"],
+              "select": "all"
+            }
+        }
+      ]
+    },
+    {
       "id": "melon_usk",
       "title": "Melon Usk",
       "description": "A billionaire buys the cloud, and while trying to reduce costs, destroys all microservices.",
@@ -493,13 +724,17 @@
               "label": ["microservice"],
               "select": "all"
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
     {
       "id": "bill_gates",
       "title": "Bill Gates",
-      "description": "Reveal all Azure clusters of your opponents. Also, when you destroy an cluster that is not in Azure, draw a card.",
+      "description": "Reveal all Azure clusters of your opponents.",
       "units": 1,
       "type": "celebrity",
       "label": ["corporation"],
@@ -516,15 +751,8 @@
             }
         },
         {
-          "when": "on_destroy",
-          "type": "action_if_true",
-          "target": 
-            {
-              "who": "others",
-              "type": ["cluster"],
-              "vendor": ["AWS","GPC","OpenShift"]
-            },
-          "action": "draw"
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     },
@@ -576,6 +804,62 @@
               "type": ["tech","celebrity","offense","defense"],
               "select": "all"
             }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "government_mandate_corporation",
+      "title": "Government Mandate for Corporate Software",
+      "description": "The government of your country has made a law that restricts the use of open source software. All open source cards are removed.",
+      "units": 1,
+      "type": "event",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "all",
+              "type": ["tech","celebrity"],
+              "label": ["opensource"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "government_mandate_opensource",
+      "title": "Government Mandate for Open Source",
+      "description": "The government of your country has made a law that promotes the use of open source software. All corporate cards are removed.",
+      "units": 1,
+      "type": "event",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "show_card"
+        },
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "all",
+              "type": ["tech","celebrity"],
+              "label": ["corporate"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
         }
       ]
     }
