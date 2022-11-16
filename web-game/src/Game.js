@@ -4,7 +4,8 @@ export const SyGame = {
   setup: () => ({
     board: Array(player_count).fill([]),
     hand: Array(player_count).fill([]),
-    deck: buildDeck()
+    deck: buildDeck(),
+    pendingActions: [],
   }),
 
   turn: {
@@ -38,21 +39,29 @@ function drawCard({ G, playerID, events }, card) {
 }
 
 function playCard({ G, playerID, events }, card) {
-  card.actions.forEach(action => {
-    processAction({ G, playerID, events}, 'on_played', action, card);
-  });
-
+  G.pendingActions = card.actions.concat(G.pendingActions);
+  processNextAction({ G, playerID, events}, 'on_played', card);
   events.endTurn();
 }
 
+function processNextAction({ G, playerID, events }, when, card) {
+  if (G.pendingActions.length > 0) {
+    let action = G.pendingActions.shift();
+    let next = processAction({ G, playerID, events }, when, action, card);
+    if (next) {
+      processNextAction({ G, playerID, events }, when, card);
+    }
+  }
+}
+
 function processAction({ G, playerID, events }, when, action, card) {
-  if ( action.when !== when ) { return; }
+  if ( action.when !== when ) { return true; }
 
   switch(action.type) {
-    case 'place': action_place({ G, playerID, events}, action, card); break;
-    case 'remove_or_reveal': action_remove_or_reveal({ G, playerID, events}, action, card); break;
-    case 'autodestroy': action_autodestroy({ G, playerID, events}, action, card); break;
-    default: break;
+    case 'place': return action_place({ G, playerID, events}, action, card);
+    case 'remove_or_reveal': return action_remove_or_reveal({ G, playerID, events}, action, card);;
+    case 'autodestroy': return action_autodestroy({ G, playerID, events}, action, card);;
+    default: return true;
   }
 }
 
@@ -65,8 +74,37 @@ function action_place({ G, playerID, events}, action, card) {
   G.board[playerID].push(card);
 }
 
+/*
+  {
+    "when": "on_played",
+    "type": "remove_or_reveal",
+    "target": 
+      {
+        "who": "others",
+        "type": ["cluster"],
+        "select": "one"
+      },
+    "condition_remove": 
+      {
+        "vendor": ["AWS"]
+      },
+    "condition_reveal": 
+      {
+        "vendor": ["Azure","GCP","OpenShift"]
+      }
+  }
+  */
 function action_remove_or_reveal({ G, playerID, events}, action, card) {
   //G.hand[playerID] = G.hand[playerID].filter(function(e) { return e.instance_id !== card.instance_id })
+  // Set 
+}
+
+function action_remove_or_reveal_select_cards({ G, playerID, events}, action, card) {
+
+}
+
+function action_remove_or_reveal_apply_selection({ G, playerID, events}, action, card) {
+
 }
 
 function buildDeck() {

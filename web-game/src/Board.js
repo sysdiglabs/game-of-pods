@@ -38,8 +38,8 @@ export function SyBoard({ ctx, G, moves }) {
     let hand_style = (isPlayerHandSelected) ? currentSectionStyle : sectionStyle;
     boards.push(
       <div id="board-{ctx.currentPlayer}">
-        <div style={board_style}><p>Player {ctx.currentPlayer} board</p>{board}</div>
-        <div style={hand_style}><p>Player {ctx.currentPlayer} hand</p>{hand}</div>
+        <div style={board_style}><p>Player {renderPlayer} board</p>{board}</div>
+        <div style={hand_style}><p>Player {renderPlayer} hand</p>{hand}</div>
       </div>
     );
   }
