@@ -2,6 +2,7 @@ import os
 import argparse
 import importlib
 import shutil
+import json
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 ## VARS ##
@@ -14,6 +15,7 @@ cardsDefinitionFile = "cards.json"
 
 def getCards():
     with open(cardsDefinitionFile, 'r') as cards:
+        cardsFile = json.loads(cards)
         
 
 
