@@ -10,6 +10,7 @@ import jinja2
 cardsDefinitionFile = "cards.json"
 templatePath = "templates/"
 templateFile = templatePath + "cards-template.md"
+imagesPath = "../../card-images/"
 
 ## END VARS ##
 
@@ -31,6 +32,8 @@ def getCards():
             cDescription = cardsFile['cards'][numCard]['description']
             cType = cardsFile['cards'][numCard]['type']
             
+            checkImages(id)
+
             cardTitle.append(cTitle)
             cardDescription.append(cDescription)
             cardType.append(cType)
@@ -54,11 +57,17 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
             text.write(content)
             print("wrote..." + filePath)
 
+def checkImages(cardId):
+    image = imagesPath + cardId + ".png"
+    if os.path.exists(image):
+        print("INFO: The image " + image + " is already present")
+    else:
+        print("WARNING: Missing " + image + "!")
 
 
 def main(): 
     cardTitle, cardDescription, cardType, numberOfCards, cardId = getCards()
-    renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId)
+    #renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId)
 
     
 ## END FUNCTIONS ##
