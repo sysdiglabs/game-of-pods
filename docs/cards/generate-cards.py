@@ -24,11 +24,9 @@ def getCards():
     with open(cardsDefinitionFile, 'r') as cards:
         cardsFile = json.loads(cards.read())
         numberOfCards = len(cardsFile['cards'])
-        # Test number of cards
         print('INFO: Total number of cards found in ' + cardsDefinitionFile + ' : ' + str(numberOfCards))
         for numCard in range(numberOfCards):
             id = cardsFile['cards'][numCard]['id']
-            #print(id)
             cTitle = cardsFile['cards'][numCard]['title']
             cDescription = cardsFile['cards'][numCard]['description']
             cType = cardsFile['cards'][numCard]['type']
@@ -37,14 +35,9 @@ def getCards():
             cardDescription.append(cDescription)
             cardType.append(cType)
             cardId.append(id)
-            #print(cardTitle)
-            #print(cardDescription)
-            #print(cardType)
         return cardTitle, cardDescription, cardType, numberOfCards, cardId
 
 def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
-    #templateEngine = Environment(loader=PackageLoader('templates', templatePath), autoescape=select_autoescape())
-    #template = templateEngine.get_template('cards-template.md')
     templateLoader = jinja2.FileSystemLoader(searchpath=".")
     templateEnv = jinja2.Environment(loader=templateLoader)
     template = templateEnv.get_template(templateFile)
@@ -61,29 +54,9 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
             text.write(content)
             print("wrote..." + filePath)
 
-    #output = template.render()
-    #print(output)
 
 
-
-
-
-
-def main():
-
-#    parser=argparse.ArgumentParser(
-#        description='Renders cards from the cards.json definition.'
-#    )
-#    parser.add_argument(
-#
-#    )
-#
-#    try:
-#        args=parser.parse_args()
-#    except:
-#        parser.print_help()
-#        exit(1)
-    
+def main(): 
     cardTitle, cardDescription, cardType, numberOfCards, cardId = getCards()
     renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId)
 
