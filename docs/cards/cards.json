@@ -3,7 +3,7 @@
     {
       "id": "aws_cluster",
       "title": "AWS Cluster",
-      "description": "",
+      "description": "Powered by EKS.",
       "units": 2,
       "vendor": "AWS",
       "type": "cluster",
@@ -17,7 +17,7 @@
     {
       "id": "azure_cluster",
       "title": "Azure Cluster",
-      "description": "",
+      "description": "Powered by AKS.",
       "units": 2,
       "vendor": "Azure",
       "type": "cluster",
@@ -31,7 +31,7 @@
     {
       "id": "gcp_cluster",
       "title": "Google Cloud Cluster",
-      "description": "",
+      "description": "Powered by GKE.",
       "units": 2,
       "vendor": "GCP",
       "type": "cluster",
@@ -45,7 +45,7 @@
     {
       "id": "openshift_cluster",
       "title": "OpenShift Cluster",
-      "description": "",
+      "description": "Powered by OpenShift.",
       "units": 2,
       "vendor": "OpenShift",
       "type": "cluster",
@@ -1051,7 +1051,7 @@
     {
       "id": "system_shutdown",
       "title": "System Shutdown Time",
-      "description": "OH NO! Your system has a failure, all the system went down, business is stopped. You will lose all your cluster in three turns.",
+      "description": "OH NO! Your system has a failure, all the system went down, business is stopped. You will lose all your clusters in three turns.",
       "units": 1,
       "type": "event"
     },
