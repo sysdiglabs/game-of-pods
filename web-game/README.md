@@ -10,6 +10,10 @@ Install nvm
 
 Remember to follow the steps to add nvm to your .zshrc
 
+Install the lts version
+
+`nvm install --lts`
+
 Install boardgame.io
 
 `npm install boardgame.io`
