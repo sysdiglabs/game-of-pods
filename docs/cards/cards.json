@@ -400,7 +400,7 @@
     {
       "id": "phishing",
       "title": "Phishing attack",
-      "description": "You perform a phishing attack to an opponent that you choose. You steal a random card from other player's hand.",
+      "description": "You perform a phishing attack to an opponent of your choice. You steal a random card from the other player's hand.",
       "units": 2,
       "type": "offense",
       "actions": [
@@ -423,7 +423,7 @@
     {
       "id": "stolen_credentials",
       "title": "Stolen Credentials",
-      "description": "You manage to get the cloud credentials from one of your opponent. You steal a tech card from other player's hand.",
+      "description": "You manage to get the cloud credentials from one of your opponent. You steal a tech card from the other player's hand.",
       "units": 2,
       "type": "offense",
       "actions": [
@@ -446,7 +446,7 @@
     {
       "id": "sql_injection",
       "title": "SQL Injection",
-      "description": "You perform a SQL Injection attack to an opponent that you choose. You destroy all his/her databases cards.",
+      "description": "You perform a SQL Injection attack to an opponent of your choice. You destroy all their database cards.",
       "units": 2,
       "type": "offense",
       "actions": [
@@ -470,7 +470,7 @@
     {
       "id": "supply_chain",
       "title": "Supply Chain Attack",
-      "description": "You perform a supply chain attack to an opponent that you choose. You destroy all his/her open source cards.",
+      "description": "You perform a supply chain attack to an opponent of your choice. You destroy all their open source cards.",
       "units": 2,
       "type": "offense",
       "actions": [
@@ -492,9 +492,9 @@
       ]
     },
     {
-      "id": "log4j",
-      "title": "Log4J",
-      "description": "A massive vulnerability appears in Java affecting all the players (you included). All Java cards are destroyed.",
+      "id": "log4shell",
+      "title": "Log4Shell",
+      "description": "A massive vulnerability appears in Java affecting all the players. All Java cards in play are destroyed.",
       "units": 2,
       "type": "offense",
       "actions": [
@@ -518,21 +518,21 @@
     {
       "id": "brute_force_attack",
       "title": "Brute Force Attack",
-      "description": "Destroy one tech of your choice from an opponent.",
+      "description": "You focus all your computing power on the target. Destroy one tech of your choice from an opponent.",
       "units": 2,
       "type": "offense"
     },
     {
       "id": "ransomware",
       "title": "Ransomware",
-      "description": "An opponent may destroy a cluster he controls. If he doesn't, he skips his next turn.",
+      "description": "The cluster has been targeted by a ransomware gang. An opponent may destroy a cluster he controls. If he doesn't, he skips his next turn.",
       "units": 2,
       "type": "offense"
     },
     {
       "id": "cloud_obfuscation",
       "title": "Cloud Obfuscation",
-      "description": "Your security team has implemented a set of actions to prevent fingerprinting of your clusters. All the cluster cards are again hidden and you can shuffle them.",
+      "description": "Your security team has implemented measures to prevent fingerprinting of your clusters. All the cluster cards are again hidden and you can shuffle them.",
       "units": 2,
       "type": "defense",
       "actions": [
@@ -565,7 +565,7 @@
     {
       "id": "cloud_migration",
       "title": "Cloud Migration",
-      "description": "Your infra team has managed a migration to another cloud provder. You can exchange one of your cluster cards for one of another player.",
+      "description": "Your infra team has managed a migration to another cloud provider. You can exchange one of your cluster cards for one of another player.",
       "units": 2,
       "type": "defense",
       "actions": [
@@ -594,7 +594,7 @@
     {
       "id": "external_auditory",
       "title": "External Auditory",
-      "description": "With the help of an external auditor, you implemented several security compliance. You will not receive damages in your clusters for in the next round.",
+      "description": "With the help of an external auditor, you passed several security compliance tests. You will not receive damages in your clusters until your next turn.",
       "units": 2,
       "type": "defense",
       "actions": [
@@ -617,7 +617,7 @@
     {
       "id": "mfa",
       "title": "MFA",
-      "description": "You enforce Multi-Factor Authentication on all your cloud accounts. You can draw two extra cards.",
+      "description": "You enforce Multi-Factor Authentication on all your cloud accounts. You may draw two cards.",
       "units": 2,
       "type": "defense",
       "actions": [
@@ -638,14 +638,14 @@
     {
       "id": "container_forensics",
       "title": "Container Forensics",
-      "description": "You have better skills now to perform forensic analysis in your containers. Skip the draw step; Until your next turn, prevent all damage to your clusters.",
+      "description": "You have better skills now to perform forensic analysis in your containers. Skip the draw step; until your next turn, prevent all damage to your clusters.",
       "units": 2,
       "type": "defense"
     },
     {
       "id": "backup",
-      "title": "Backup",
-      "description": "A good backup policy saves you from disasters. Pick one cluster from the discard pile and put it in your cloud.",
+      "title": "Replicated Backups",
+      "description": "A good backup policy saves you from disasters. Pick one cluster from the destroyed clusters pile and put it in your cloud.",
       "units": 2,
       "type": "defense"
     },
@@ -659,21 +659,21 @@
     {
       "id": "ml_model_detection",
       "title": "Machine Learning Model Detection",
-      "description": "You implement detection based on Machine Learning. Choose one opponent and until your next turn, attacks from that opponent to your clusters have no effect.",
+      "description": "You implement detection based on Machine Learning. Choose one opponent: until your next turn, attacks from that opponent to your clusters have no effect.",
       "units": 2,
       "type": "defense"
     },
     {
       "id": "image_scanning",
       "title": "Image Scanning",
-      "description": "You scan all the images of your containers. You can look the cards of another player, including one hidden cluster.",
+      "description": "You scan all the images of your containers. You may look at the cards in target player's hand, and at up to one of target player's hidden clusters.",
       "units": 2,
       "type": "defense"
     },
     {
       "id": "disaster_recovery",
       "title": "Disaster Recovery",
-      "description": "Pick X cluster cards from the destroyed clusters pile, being X the number of your clusters destroyed during this round. Put them back in your cloud face up.",
+      "description": "Your main cloud region has lost connectivity, so you trigger your DR procedures. Pick X cluster cards from the destroyed clusters pile, where X is the number of your clusters destroyed since your last turn. Put them back in your cloud face up.",
       "units": 2,
       "type": "defense"
     },
@@ -694,7 +694,7 @@
     {
       "id": "falco_sidekick",
       "title": "Falco Sidekick",
-      "description": "If you have the Falco Tech card, whenever one of your clusters is destroyed, you might discard a card. If you do so, put the destroyed cluster back into the cloud.",
+      "description": "You install Falco Sidekick to get alert integrations with your tools. If you deployed the Falco Tech card, whenever one of your clusters is destroyed you might discard a card. If you do , put the destroyed cluster back into the cloud.",
       "units": 1,
       "type": "tech",
       "label": ["opensource","microservice"]
@@ -702,7 +702,7 @@
     {
       "id": "sysdig_secure",
       "title": "Sysdig Secure",
-      "description": "You contract Sysdig Secure. At the start of every round, if you have any face up clusters, shuffle your clusters and put them face down.",
+      "description": "Your clusters are protected by Sysdig Secure. At the start of every round, if you have any face up clusters, shuffle your clusters and put them face down.",
       "units": 1,
       "type": "tech",
       "label": ["sysdig"],
@@ -732,7 +732,7 @@
     {
       "id": "mongo_db",
       "title": "MongoDB",
-      "description": "MongoDB changes its license to a non open source one. Ech round an opponent of your choice reveals a cluster card in his/her hand.",
+      "description": "MongoDB changes its license to a non open source one. Each round an opponent of your choice reveals a cluster card in their hand.",
       "units": 1,
       "type": "tech",
       "label": ["microservice","database"],
@@ -752,7 +752,7 @@
     {
       "id": "nginx",
       "title": "NGINX",
-      "description": "Your tech cards cannot be destroyed.",
+      "description": "You deployed a reverse proxy in front of your application frontends. Your tech cards cannot be destroyed.",
       "units": 1,
       "type": "tech",
       "label": ["microservice"],
@@ -772,7 +772,7 @@
     {
       "id": "java_servlet",
       "title": "Java Servlet",
-      "description": "At the start of your turn, an opponent of your choice discards a card.",
+      "description": "Tried and tested application, although its memory requirements are absurd. At the start of your turn, an opponent of your choice discards a card.",
       "units": 1,
       "type": "tech",
       "label": ["java"]
@@ -780,7 +780,7 @@
     {
       "id": "prometheus",
       "title": "Prometheus Monitoring",
-      "description": "In your draw step, look at the top three cards of the deck. Draw one, then shuffle the deck.",
+      "description": "You installed Prometheus to collect the metrics of your kubernetes clusters. In your draw step, look at the top three cards of the deck. Draw one, then shuffle the deck.",
       "units": 1,
       "type": "tech",
       "label": ["opensource","microservice"]
@@ -788,7 +788,7 @@
     {
       "id": "sysdig_monitor",
       "title": "Sysdig Monitor",
-      "description": "You contract Sysdig Secure. At the start of your turn, an opponent of your choice reveals a cluster.",
+      "description": "Your clusters are monitored by Sysdig Monitor. At the start of your turn, an opponent of your choice reveals a cluster.",
       "units": 1,
       "type": "tech",
       "label": ["sysdig"]
@@ -796,15 +796,15 @@
     {
       "id": "helm",
       "title": "Helm Deployments",
-      "description": "You use Helm to automate your deployments. At the start of your turn, an opponent of your choice reveals a cluster.",
+      "description": "You use Helm to automate your deployments. You might play an additional attack per turn.",
       "units": 1,
       "type": "tech",
       "label": ["opensource"]
     },
     {
-      "id": "spring",
-      "title": "Spring",
-      "description": "When you have Spring in your cloud, you can pick one card from the discard pile. If you do so, skip your drawing step.",
+      "id": "springboot",
+      "title": "SpringBoot",
+      "description": "You start converting your legacy application to modern frameworks. At the start of your turn, you may pick one card from the discard pile. If you do so, skip your drawing step.",
       "units": 1,
       "type": "tech",
       "label": ["java","microservice"]
@@ -812,7 +812,7 @@
     {
       "id": "terraform",
       "title": "Terraform",
-      "description": "Once per turn, you may discard a card. If you do so, draw a card.",
+      "description": "You define all your infrastructure through terraform scripts. Once per turn, you may discard a card. If you do so, draw a card.",
       "units": 1,
       "type": "tech",
       "label": ["opensource"]
@@ -828,7 +828,7 @@
     {
       "id": "postgresql",
       "title": "PostgreSQL",
-      "description": "Once per turn, you may discard your hand. Shuffle the discard pile back into the deck. Draw back the number of cards you discarded.",
+      "description": "You fine tune your databases with sharding and replication. Once per turn, you may discard your hand. Shuffle the discard pile back into the deck. Draw back the number of cards you discarded.",
       "units": 1,
       "type": "tech",
       "label": ["opensource", "database"]
@@ -869,7 +869,7 @@
     {
       "id": "loris_degioanni",
       "title": "Loris Degioanni",
-      "description": "When it enters the cloud, choose one Cluster provider. Clusters of that provider cannot be destroyed as long as Loris is in the cloud.",
+      "description": "When Loris enters the cloud, choose one Cluster provider. Clusters of that provider cannot be destroyed as long as Loris is in the cloud.",
       "units": 1,
       "type": "celebrity",
       "label": ["opensource"]
@@ -877,7 +877,7 @@
     {
       "id": "bill_gates",
       "title": "Bill Gates",
-      "description": "Reveal all Azure clusters of your opponents.",
+      "description": "Reveal all Azure clusters of your opponents. When you destroy an OpenShift, Google Cloud or AWS cluster, draw a card.",
       "units": 1,
       "type": "celebrity",
       "label": ["corporation"],
@@ -902,7 +902,7 @@
     {
       "id": "jeff_bezos",
       "title": "Jeff Bezos",
-      "description": "Reveal all AWS clusters of your opponents. Also, every turn, you can discard a card and draw a new one.",
+      "description": "Reveal all AWS clusters of your opponents. At the start of your turn, you can discard a card and draw a new one.",
       "units": 1,
       "type": "celebrity",
       "label": ["corporation"],
@@ -1026,7 +1026,7 @@
     {
       "id": "kraken",
       "title": "The Kraken",
-      "description": "A huge mythological creature appears and cuts the undersea optical cables that provide global internet. Each player with the most clusters in the cloud destroys one cluster of their own.",
+      "description": "A huge mythological creature appears and cuts the undersea optical cables that provide global internet. Each player with the most clusters in the cloud destroys one of their clusters.",
       "units": 1,
       "type": "event"
     },
@@ -1047,21 +1047,21 @@
     {
       "id": "new_vulnerability_disclosure",
       "title": "New Vulnerability Disclosure",
-      "description": "The current player may pick up one defense card from the discard pile. If there are none, the active player destroys one of his/her clusters.",
+      "description": "A new vulnerability is found and POC start appearing. The current player may pick up one defense card from the discard pile. If there are none, they destroy one of their clusters.",
       "units": 1,
       "type": "event"
     },
     {
       "id": "hardware_recommissioning",
       "title": "Hardware Recommissioning",
-      "description": "Shuffle cards from the discard pile back into the deck.",
+      "description": "Reduce, reuse, recycle. Shuffle cards from the discard pile back into the deck.",
       "units": 1,
       "type": "event"
     },
     {
       "id": "compliance_audit",
       "title": "Compliance audit",
-      "description": "Each player takes a card from their hand and passes it face down to the next player. If a player has no cards in hand, he does not pass anything.",
+      "description": "Time to test if we did a good job. Each player takes a card from their hand and passes it face down to the next player. If a player has no cards in hand, he does not pass anything.",
       "units": 1,
       "type": "event"
     },
@@ -1075,14 +1075,14 @@
     {
       "id": "crunch_time",
       "title": "Crunch time",
-      "description": "Active player takes an extra turn after this one.",
+      "description": "I love deadlines. I love the whooshing noise they make as they go by. Current player takes an extra turn after this one.",
       "units": 1,
       "type": "event"
     },
     {
       "id": "system_shutdown",
       "title": "System Shutdown Time",
-      "description": "OH NO! Your system has a failure, all the system went down, you'll lost all your cluster in three turns.",
+      "description": "OH NO! Your system has a failure, all the system went down, business is stopped. You will lose all your cluster in three turns.",
       "units": 1,
       "type": "event"
     },
