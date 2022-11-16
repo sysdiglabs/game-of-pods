@@ -73,7 +73,7 @@
        y="0"><tspan
          x="219.63374"
          y="552.55394"
-         id="tspan3774">Machine Learning Model Detection
+         id="tspan3774">External Audit
 </tspan><tspan
          x="219.63374"
          y="585.88731"
@@ -92,7 +92,7 @@
          y="637.57117"
          id="tspan3780"><tspan
            style="font-size:20px"
-           id="tspan3778">You implement detection based on Machine Learning. Choose one opponent: until your next turn, attacks from that opponent to your clusters have no effect.
+           id="tspan3778">With the help of an external auditor, you passed several security compliance tests. Until your next turn, your clusters can't be destroyed.
 </tspan></tspan><tspan
          x="228.81836"
          y="663.09119"
@@ -114,7 +114,7 @@
        width="135.46666"
        height="135.46666"
        preserveAspectRatio="none"
-       xlink:href="../../../../card-images/ml_model_detection.png"
+       xlink:href="../../../../card-images/external_audit.png"
        id="image3412"
        x="0"
        y="0" /><text

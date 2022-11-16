@@ -16,6 +16,7 @@ imagesPath = "../../card-images/"
 exportsPath = "exports/"
 pngsPath = exportsPath + "pngs/"
 svgsPath = exportsPath + "svgs/"
+availableLabels = ["opensource","corporation","microservice","database","java"]
 
 ## END VARS ##
 
@@ -27,6 +28,7 @@ def getCards():
     cardType = []
     cardId = []
     cardColor = []
+    cardLabels = []
 
     with open(cardsDefinitionFile, 'r') as cards:
         cardsFile = json.loads(cards.read())
@@ -38,7 +40,9 @@ def getCards():
             cDescription = cardsFile['cards'][numCard]['description']
             cType = cardsFile['cards'][numCard]['type']
             cColor = getCardColor(cType)
-            
+            if 'label' not in cardsFile['cards'][numCard].keys(): 
+                cardsFile['cards'][numCard]['label'] = []
+            cLabels = getLabelsColor(cardsFile['cards'][numCard]['label'])
             checkImages(cId)
 
             cardTitle.append(cTitle)
@@ -46,9 +50,10 @@ def getCards():
             cardType.append(cType)
             cardId.append(cId)
             cardColor.append(cColor)
-        return cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor
+            cardLabels.append(cLabels)
+        return cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels
 
-def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor):
+def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels):
     templateLoader = jinja2.FileSystemLoader(searchpath=".")
     templateEnv = jinja2.Environment(loader=templateLoader)
     template = templateEnv.get_template(templateFile)
@@ -58,12 +63,14 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, car
         pngFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".png"
         imageFilePath = svgsPath + imageFile
         pngFilePath = pngsPath + pngFile
+        # print(cardLabels)
         content = template.render(
             title = cardTitle[numCard],
             description = cardDescription[numCard],
             type = cardType[numCard],
             cId = cardId[numCard],
-            cColor = cardColor[numCard]
+            cColor = cardColor[numCard],
+            cLabels = cardLabels
         )
  
         with open(imageFilePath, mode="w", encoding="utf-8") as text:
@@ -99,10 +106,15 @@ def getCardColor(cardType):
     else:
         return "#1e7ab7"
 
+def getLabelsColor(labels):
+    labels = {} 
+    for label in availableLabels:
+        labels[label] = 1 if label in labels else 0
+    return labels
 
 def main(): 
-    cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor = getCards()
-    renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId,cardColor)
+    cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels = getCards()
+    renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId,cardColor, cardLabels)
 
     
 ## END FUNCTIONS ##
