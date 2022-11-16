@@ -857,6 +857,7 @@
             {
               "who": "others",
               "type": ["tech","celebrity","offense","defense"],
+              "label": ["corporation"],
               "select": "all"
             }
         },
