@@ -4,6 +4,7 @@ import importlib
 import shutil
 import json
 import jinja2
+from fpdf import FPDF
 
 ## VARS ##
 
@@ -11,6 +12,9 @@ cardsDefinitionFile = "cards.json"
 templatePath = "templates/"
 templateFile = templatePath + "cards-template.md"
 imagesPath = "../../card-images/"
+exportsPath = "exports/"
+pdfsPath = exportsPath + "pdfs/"
+svgsPath = exportsPath + "svgs/"
 
 ## END VARS ##
 
@@ -46,16 +50,20 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
     template = templateEnv.get_template(templateFile)
 
     for numCard in range(numberOfCards):
-        fileName = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".svg"
-        filePath = templatePath + fileName
+        imageFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".svg"
+        pdfFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".pdf"
+        imageFilePath = svgsPath + imageFile
+        pdfFilePath = pdfsPath + pdfFile
         content = template.render(
             title = cardTitle[numCard],
             description = cardDescription[numCard],
             type = cardType[numCard]
         )
-        with open(filePath, mode="w", encoding="utf-8") as text:
+        with open(imageFilePath, mode="w", encoding="utf-8") as text:
             text.write(content)
-            print("wrote..." + filePath)
+            print("wrote..." + imageFilePath)
+
+        exportPdf(pdfFilePath,imageFilePath)
 
 def checkImages(cardId):
     image = imagesPath + cardId + ".png"
@@ -64,10 +72,15 @@ def checkImages(cardId):
     else:
         print("WARNING: Missing " + image + "!")
 
+def exportPdf(pdfFilePath,imageFilePath): 
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.image(imageFilePath)
+    pdf.output(pdfFilePath,'F')
 
 def main(): 
     cardTitle, cardDescription, cardType, numberOfCards, cardId = getCards()
-    #renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId)
+    renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId)
 
     
 ## END FUNCTIONS ##
