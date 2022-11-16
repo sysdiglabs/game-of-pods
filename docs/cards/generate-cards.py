@@ -13,10 +13,13 @@ cardsDefinitionFile = "cards.json"
 templatePath = "templates/"
 cardTemplateFile = templatePath + "card_template.svg"
 clusterTemplateFile = templatePath + "cluster_template.svg"
+printTemplateFile = templatePath + "print_template.svg"
 imagesPath = "../../card-images/"
 exportsPath = "exports/"
 pngsPath = exportsPath + "pngs/"
 svgsPath = exportsPath + "svgs/"
+printSvgPath = exportsPath + "printsvgs/"
+printPdfPath = exportsPath + "printpdfs/"
 availableLabels = ["opensource","corporation","microservice","database","java"]
 
 ## END VARS ##
@@ -60,6 +63,7 @@ def getCards():
         return cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels
 
 def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels):
+    pngFilesToPrint=[]
     for numCard in range(numberOfCards):
         templateLoader = jinja2.FileSystemLoader(searchpath=".")
         templateEnv = jinja2.Environment(loader=templateLoader)
@@ -70,6 +74,7 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, car
 
         imageFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".svg"
         pngFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".png"
+        pngFilesToPrint.append(pngFile)
         imageFilePath = svgsPath + imageFile
         pngFilePath = pngsPath + pngFile
         
@@ -88,6 +93,30 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, car
             
         exportPng(pngFilePath,imageFilePath)
 
+    for index in range(0,len(pngFilesToPrint),8):
+        templateLoader = jinja2.FileSystemLoader(searchpath=".")
+        templateEnv = jinja2.Environment(loader=templateLoader)
+        template = templateEnv.get_template(printTemplateFile)
+
+        if len(pngFilesToPrint) < index + 7:
+            for _ in range(0,index + 7 - len(pngFilesToPrint) +1):
+                pngFilesToPrint.append("")
+        content = template.render(
+            image01 = pngFilesToPrint[index],
+            image02 = pngFilesToPrint[index+1],
+            image03 = pngFilesToPrint[index+2],
+            image04 = pngFilesToPrint[index+3],
+            image05 = pngFilesToPrint[index+4],
+            image06 = pngFilesToPrint[index+5],
+            image07 = pngFilesToPrint[index+6],
+            image08 = pngFilesToPrint[index+7])
+
+        printFileName = "print_" + str(index) + ".svg"
+        with open(printSvgPath+printFileName, mode="w", encoding="utf-8") as text:
+            text.write(content)
+            print("wrote..." + printSvgPath+printFileName)
+        #exportPdf(printPdfPath+"print_" + str(index) + ".pdf",printSvgPath+printFileName)
+
 def checkImages(cardId):
     image = imagesPath + cardId + ".png"
     if os.path.exists(image):
@@ -102,6 +131,14 @@ def exportPng(pngFilePath,imageFilePath):
 
     options = '--batch-process --export-type=png'
     os.system('inkscape ' + imageFilePath + ' --export-filename=' + pngFilePath + ' ' + options)
+
+def exportPdf(pdfFilePath,imageFilePath):
+    print(imageFilePath)
+    print(os.path.exists(imageFilePath))
+    print(pdfFilePath)
+
+    options = '--batch-process --export-type=pdf'
+    os.system('inkscape ' + imageFilePath + ' --export-filename=' + pdfFilePath + ' ' + options)
 
 def getCardColor(cardType):
     if cardType == "celebrity":
