@@ -561,8 +561,8 @@
       ]
     },
     {
-      "id": "external_auditory",
-      "title": "External Auditory",
+      "id": "external_audit",
+      "title": "External Audit",
       "description": "With the help of an external auditor, you passed several security compliance tests. You will not receive damages in your clusters until your next turn.",
       "units": 2,
       "type": "defense",
@@ -642,7 +642,7 @@
     {
       "id": "disaster_recovery",
       "title": "Disaster Recovery",
-      "description": "Your main cloud region has lost connectivity, so you trigger your DR procedures. Pick X cluster cards from the destroyed clusters pile, where X is the number of your clusters destroyed since your last turn. Put them back in your cloud face up.",
+      "description": "Your main cloud region has lost a data center. Pick X cards from the destroyed clusters pile, where X is the number of your clusters destroyed since your last turn. Put them in your cloud face up.",
       "units": 2,
       "type": "defense"
     },
@@ -1009,7 +1009,7 @@
     {
       "id": "cloud_misconfiguration",
       "title": "Cloud Misconfiguration",
-      "description": "The cloud providers messed up the configuration and mixed clusters from different customers. Shuffle all the clusters in play. Each player plays them face down. Each player reveals one cluster",
+      "description": "The cloud providers messed up. Shuffle all the clusters in play. Each player plays them face down. Each player reveals one cluster",
       "units": 1,
       "type": "event"
     },
