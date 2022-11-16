@@ -494,7 +494,7 @@
     {
       "id": "ransomware",
       "title": "Ransomware",
-      "description": "The cluster has been targeted by a ransomware gang. An opponent may destroy a cluster he controls. If he doesn't, he skips his next turn.",
+      "description": "There's a new ransomware gang around. An opponent may destroy a cluster he controls. If he doesn't, he skips his next turn.",
       "units": 2,
       "type": "offense"
     },
@@ -563,7 +563,7 @@
     {
       "id": "external_audit",
       "title": "External Audit",
-      "description": "With the help of an external auditor, you passed several security compliance tests. You will not receive damages in your clusters until your next turn.",
+      "description": "With the help of an external auditor, you passed several security compliance tests. Until your next turn, your clusters can't be destroyed.",
       "units": 2,
       "type": "defense",
       "actions": [
@@ -663,7 +663,7 @@
     {
       "id": "falco_sidekick",
       "title": "Falco Sidekick",
-      "description": "You install Falco Sidekick to get alert integrations with your tools. If you deployed the Falco Tech card, whenever one of your clusters is destroyed you might discard a card. If you do , put the destroyed cluster back into the cloud.",
+      "description": "You install Falco Sidekick. If you control Falco, whenever one of your clusters is destroyed you may discard a card. If you do, put the destroyed cluster back in the cloud.",
       "units": 1,
       "type": "tech",
       "label": ["opensource","microservice"]
@@ -749,7 +749,7 @@
     {
       "id": "prometheus",
       "title": "Prometheus Monitoring",
-      "description": "You installed Prometheus to collect the metrics of your kubernetes clusters. In your draw step, look at the top three cards of the deck. Draw one, then shuffle the deck.",
+      "description": "You installed Prometheus to collect the metrics of your kubernetes clusters. In your draw step, look at the top three cards of the deck. Pick one, then shuffle the deck.",
       "units": 1,
       "type": "tech",
       "label": ["opensource","microservice"]
@@ -797,7 +797,7 @@
     {
       "id": "postgresql",
       "title": "PostgreSQL",
-      "description": "You fine tune your databases with sharding and replication. Once per turn, you may discard your hand. Shuffle the discard pile back into the deck. Draw back the number of cards you discarded.",
+      "description": "You add sharding and replication to your db. Once per turn, you may discard your hand. Shuffle the discard pile back into the deck. Draw back the number of cards you discarded.",
       "units": 1,
       "type": "tech",
       "label": ["opensource", "database"]
@@ -813,7 +813,7 @@
     {
       "id": "melon_usk",
       "title": "Melon Usk",
-      "description": "A billionaire buys the cloud, and while trying to reduce costs, destroys all microservices.",
+      "description": "A billionaire buys the cloud, and has creative ways of reducing costs. Destroy all microservices.",
       "units": 1,
       "type": "celebrity",
       "label": ["corporation"],
@@ -902,7 +902,7 @@
     {
       "id": "paul_cormier",
       "title": "Paul Cormier",
-      "description": "When it enters the cloud, steal up to two clusters from opponents of your choice. You can not steal their last cluster. Quorum: In your next turn, if you control 2 or less clusters, destroy all your clusters.",
+      "description": "When Paul enters the cloud, steal up to 2 clusters from opponents. You can not steal their last cluster. At the start of your turn, if you control 2 or less clusters, destroy all your clusters.",
       "units": 1,
       "type": "celebrity",
       "label": ["opensource"]
@@ -995,7 +995,7 @@
     {
       "id": "kraken",
       "title": "The Kraken",
-      "description": "A huge mythological creature appears and cuts the undersea optical cables that provide global internet. Each player with the most clusters in the cloud destroys one of their clusters.",
+      "description": "A huge mythological creature appears and cuts the undersea cables. Each player with the most clusters in the cloud destroys one of their clusters.",
       "units": 1,
       "type": "event"
     },
@@ -1051,7 +1051,7 @@
     {
       "id": "system_shutdown",
       "title": "System Shutdown Time",
-      "description": "OH NO! Your system has a failure, all the system went down, business is stopped. You will lose all your clusters in three turns.",
+      "description": "OH NO! Your systems are reaching a critical temperature and will shutdown soon. You will lose all your clusters in three turns.",
       "units": 1,
       "type": "event"
     },
