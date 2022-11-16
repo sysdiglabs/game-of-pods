@@ -45,20 +45,21 @@ def getCards():
 def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
     #templateEngine = Environment(loader=PackageLoader('templates', templatePath), autoescape=select_autoescape())
     #template = templateEngine.get_template('cards-template.md')
-    templateLoader = jinja2.FileSystemLoader(searchpath="./templates")
+    templateLoader = jinja2.FileSystemLoader(searchpath=".")
     templateEnv = jinja2.Environment(loader=templateLoader)
     template = templateEnv.get_template(templateFile)
 
     for numCard in range(numberOfCards):
-        fileName = "card_" + cardId[numCard] + "_" + numCard + ".svc"
+        fileName = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".svg"
+        filePath = templatePath + fileName
         content = template.render(
-            title = cardTitle,
-            description = cardDescription,
-            type = cardType
+            title = cardTitle[numCard],
+            description = cardDescription[numCard],
+            type = cardType[numCard]
         )
-        with open(fileName, mode="w", encoding="utf-8") as text:
+        with open(filePath, mode="w", encoding="utf-8") as text:
             text.write(content)
-            print("wrote..." + fileName)
+            print("wrote..." + filePath)
 
     #output = template.render()
     #print(output)
