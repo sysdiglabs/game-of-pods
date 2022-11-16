@@ -4,7 +4,8 @@ import importlib
 import shutil
 import json
 import jinja2
-from fpdf import FPDF
+from svglib.svglib import svg2rlg
+from reportlab.graphics import renderPDF
 
 ## VARS ##
 
@@ -72,11 +73,13 @@ def checkImages(cardId):
     else:
         print("WARNING: Missing " + image + "!")
 
-def exportPdf(pdfFilePath,imageFilePath): 
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.image(imageFilePath)
-    pdf.output(pdfFilePath,'F')
+def exportPdf(pdfFilePath,imageFilePath):
+    print(imageFilePath)
+    print(os.path.exists(imageFilePath))
+    print(pdfFilePath)
+
+    options = '--export-area-drawing --batch-process --export-type=pdf'
+    os.system('inkscape ' + imageFilePath + ' --export-filename=' + pdfFilePath + ' ' + options)
 
 def main(): 
     cardTitle, cardDescription, cardType, numberOfCards, cardId = getCards()
