@@ -33,7 +33,7 @@
       "title": "Google Cloud Cluster",
       "description": "",
       "units": 2,
-      "vendor": "GPC",
+      "vendor": "GCP",
       "type": "cluster",
       "actions": [
         {
@@ -78,7 +78,7 @@
             },
           "condition_reveal": 
             {
-              "vendor": ["Azure","GPC","OpenShift"]
+              "vendor": ["Azure","GCP","OpenShift"]
             }
         },
         {
@@ -89,7 +89,7 @@
     },
     {
       "id": "azure_vulnerability",
-      "title": "Exploit Aruze vulnerability",
+      "title": "Exploit Azure vulnerability",
       "description": "",
       "units": 2,
       "type": "offense",
@@ -109,7 +109,7 @@
             },
           "condition_reveal": 
             {
-              "vendor": ["AWS","GPC","OpenShift"]
+              "vendor": ["AWS","GCP","OpenShift"]
             }
         },
         {
@@ -119,7 +119,7 @@
       ]
     },
     {
-      "id": "gpc_vulnerability",
+      "id": "gcp_vulnerability",
       "title": "Exploit Google Cloud vulnerability",
       "description": "",
       "units": 2,
@@ -136,7 +136,7 @@
             },
           "condition_remove": 
             {
-              "vendor": ["GPC"]
+              "vendor": ["GCP"]
             },
           "condition_reveal": 
             {
@@ -171,7 +171,7 @@
             },
           "condition_reveal": 
             {
-              "vendor": ["AWS","Azure","GPC"]
+              "vendor": ["AWS","Azure","GCP"]
             }
         },
         {
@@ -202,7 +202,7 @@
             },
           "condition_reveal": 
             {
-              "vendor": ["GPC","OpenShift"]
+              "vendor": ["GCP","OpenShift"]
             }
         },
         {
@@ -212,7 +212,7 @@
       ]
     },
     {
-      "id": "aws_gpc_vulnerability",
+      "id": "aws_gcp_vulnerability",
       "title": "Exploit AWS/Google Cloud vulnerability",
       "description": "",
       "units": 1,
@@ -229,7 +229,7 @@
             },
           "condition_remove": 
             {
-              "vendor": ["AWS","GPC"]
+              "vendor": ["AWS","GCP"]
             },
           "condition_reveal": 
             {
@@ -264,7 +264,7 @@
             },
           "condition_reveal": 
             {
-              "vendor": ["Azure","GPC"]
+              "vendor": ["Azure","GCP"]
             }
         },
         {
@@ -295,7 +295,7 @@
             },
           "condition_reveal": 
             {
-              "vendor": ["Azure","GPC"]
+              "vendor": ["Azure","GCP"]
             }
         },
         {
@@ -326,7 +326,7 @@
             },
           "condition_reveal": 
             {
-              "vendor": ["AWS","GPC"]
+              "vendor": ["AWS","GCP"]
             }
         },
         {
@@ -336,7 +336,7 @@
       ]
     },
     {
-      "id": "gpc_openshift_vulnerability",
+      "id": "gcp_openshift_vulnerability",
       "title": "Exploit Google Cloud/OpenShift vulnerability",
       "description": "",
       "units": 1,
@@ -353,7 +353,7 @@
             },
           "condition_remove": 
             {
-              "vendor": ["GPC","OpenShift"]
+              "vendor": ["GCP","OpenShift"]
             },
           "condition_reveal": 
             {
@@ -367,7 +367,7 @@
       ]
     },
     {
-      "id": "gpc_azure_vulnerability",
+      "id": "gcp_azure_vulnerability",
       "title": "Exploit Google Cloud/Azure vulnerability",
       "description": "",
       "units": 1,
@@ -384,7 +384,7 @@
             },
           "condition_remove": 
             {
-              "vendor": ["GPC","Azure"]
+              "vendor": ["GCP","Azure"]
             },
           "condition_reveal": 
             {
@@ -889,7 +889,7 @@
             {
               "who": "others",
               "type": ["cluster"],
-              "vendor": ["AWS","GPC","OpenShift"],
+              "vendor": ["AWS","GCP","OpenShift"],
               "select": "all"
             }
         },
@@ -914,7 +914,7 @@
             {
               "who": "others",
               "type": ["cluster"],
-              "vendor": ["Azure","GPC","OpenShift"],
+              "vendor": ["Azure","GCP","OpenShift"],
               "select": "all"
             }
         },
