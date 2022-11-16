@@ -1092,6 +1092,13 @@
       "description": "Investors are looking for new unicorns! Each player draws X cards, where X is 3 minus the number of clusters they control.",
       "units": 1,
       "type": "event"
+    },
+    {
+      "id": "ipo",
+      "title": "IPO",
+      "description": "Party night on bencer's new yacht. Each player draws one card. The player(s) with the most cards then discard 3 cards.",
+      "units": 1,
+      "type": "event"
     }
   ]
 }
