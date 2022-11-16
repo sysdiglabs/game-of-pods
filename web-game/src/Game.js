@@ -49,14 +49,24 @@ function processAction({ G, playerID, events }, when, action, card) {
   if ( action.when !== when ) { return; }
 
   switch(action.type) {
-    case 'place': action_Place({ G, playerID, events}, action, card); break;
+    case 'place': action_place({ G, playerID, events}, action, card); break;
+    case 'remove_or_reveal': action_remove_or_reveal({ G, playerID, events}, action, card); break;
+    case 'autodestroy': action_autodestroy({ G, playerID, events}, action, card); break;
     default: break;
   }
 }
 
-function action_Place({ G, playerID, events}, action, card) {
+function action_autodestroy({ G, playerID, events}, action, card) {
+  G.hand[playerID] = G.hand[playerID].filter(function(e) { return e.instance_id !== card.instance_id })
+}
+
+function action_place({ G, playerID, events}, action, card) {
   G.hand[playerID] = G.hand[playerID].filter(function(e) { return e.instance_id !== card.instance_id })
   G.board[playerID].push(card);
+}
+
+function action_remove_or_reveal({ G, playerID, events}, action, card) {
+  //G.hand[playerID] = G.hand[playerID].filter(function(e) { return e.instance_id !== card.instance_id })
 }
 
 function buildDeck() {
