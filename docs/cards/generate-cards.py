@@ -14,7 +14,7 @@ templatePath = "templates/"
 templateFile = templatePath + "card_template.svg"
 imagesPath = "../../card-images/"
 exportsPath = "exports/"
-pdfsPath = exportsPath + "pdfs/"
+pngPath = exportsPath + "pngs/"
 svgsPath = exportsPath + "svgs/"
 
 ## END VARS ##
@@ -52,15 +52,16 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
 
     for numCard in range(numberOfCards):
         imageFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".svg"
-        pdfFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".pdf"
+        pngFile = "card_" + str(cardId[numCard]) + "_" + str(numCard) + ".png"
         imageFilePath = svgsPath + imageFile
-        pdfFilePath = pdfsPath + pdfFile
+        pngFilePath = pngsPath + pngFile
         content = template.render(
             title = cardTitle[numCard],
             description = cardDescription[numCard],
             type = cardType[numCard],
             cId = cardId[numCard]
         )
+<<<<<<< HEAD
         try: 
             with open(imageFilePath, mode="w", encoding="utf-8") as text:
                 text.write(content)
@@ -68,6 +69,13 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
             #exportPdf(pdfFilePath,imageFilePath)
         except: 
             print("WARNING: Missing file " + imageFilePath + "!")
+=======
+        with open(imageFilePath, mode="w", encoding="utf-8") as text:
+            text.write(content)
+            print("wrote..." + imageFilePath)
+
+        #exportPng(pngFilePath,imageFilePath)
+>>>>>>> 32ea5b6 (changed pdf function for exporting pngs)
 
 def checkImages(cardId):
     image = imagesPath + cardId + ".png"
@@ -76,13 +84,13 @@ def checkImages(cardId):
     else:
         print("WARNING: Missing " + image + "!")
 
-def exportPdf(pdfFilePath,imageFilePath):
+def exportPng(pngFilePath,imageFilePath):
     print(imageFilePath)
     print(os.path.exists(imageFilePath))
-    print(pdfFilePath)
+    print(pngFilePath)
 
-    options = '--without-gui --export-area-drawing --batch-process --export-type=pdf'
-    os.system('inkscape ' + imageFilePath + ' --export-filename=' + pdfFilePath + ' ' + options)
+    options = '--batch-process --export-type=png'
+    os.system('inkscape ' + imageFilePath + ' --export-filename=' + pngFilePath + ' ' + options)
 
 def main(): 
     cardTitle, cardDescription, cardType, numberOfCards, cardId = getCards()
