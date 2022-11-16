@@ -3,7 +3,7 @@
     {
       "id": "aws_cluster",
       "title": "AWS Cluster",
-      "description": "Place on your board",
+      "description": "",
       "units": 2,
       "vendor": "AWS",
       "type": "cluster",
@@ -47,7 +47,7 @@
       "title": "OpenShift Cluster",
       "description": "",
       "units": 2,
-      "vendor": "AWS",
+      "vendor": "OpenShift",
       "type": "cluster",
       "actions": [
         {
@@ -59,7 +59,7 @@
     {
       "id": "aws_vulnerability",
       "title": "Exploit AWS vulnerability",
-      "description": "",
+      "description": "Let's set this S3 bucket open for good measure... Reveal target cluster. If it's an AWS cluster, destroy it.",
       "units": 2,
       "type": "offense",
       "actions": [
@@ -90,7 +90,7 @@
     {
       "id": "azure_vulnerability",
       "title": "Exploit Azure vulnerability",
-      "description": "",
+      "description": "Just reuse the same password for ADFS, it's temporary anyway... Reveal target cluster. If it's an Azure cluster, destroy it.",
       "units": 2,
       "type": "offense",
       "actions": [
@@ -121,7 +121,7 @@
     {
       "id": "gcp_vulnerability",
       "title": "Exploit Google Cloud vulnerability",
-      "description": "",
+      "description": "This should work, I copied all those key files from the documentation... Reveal target cluster. If it's a Google Cloud cluster, destroy it.",
       "units": 2,
       "type": "offense",
       "actions": [
@@ -152,7 +152,7 @@
     {
       "id": "openshift_vulnerability",
       "title": "Exploit OpenShift vulnerability",
-      "description": "",
+      "description": "root password is hunter2, why are you asking? Reveal target cluster. If it's an AWS cluster, destroy it.",
       "units": 2,
       "type": "offense",
       "actions": [
