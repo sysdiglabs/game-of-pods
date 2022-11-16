@@ -26,6 +26,7 @@ def getCards():
     cardDescription = []
     cardType = []
     cardId = []
+    cardColor = []
 
     with open(cardsDefinitionFile, 'r') as cards:
         cardsFile = json.loads(cards.read())
@@ -36,6 +37,7 @@ def getCards():
             cTitle = cardsFile['cards'][numCard]['title']
             cDescription = cardsFile['cards'][numCard]['description']
             cType = cardsFile['cards'][numCard]['type']
+            cColor = getCardColor(cType)
             
             checkImages(cId)
 
@@ -43,9 +45,10 @@ def getCards():
             cardDescription.append(cDescription)
             cardType.append(cType)
             cardId.append(cId)
-        return cardTitle, cardDescription, cardType, numberOfCards, cardId
+            cardColor.append(cColor)
+        return cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor
 
-def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
+def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor):
     templateLoader = jinja2.FileSystemLoader(searchpath=".")
     templateEnv = jinja2.Environment(loader=templateLoader)
     template = templateEnv.get_template(templateFile)
@@ -59,7 +62,8 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
             title = cardTitle[numCard],
             description = cardDescription[numCard],
             type = cardType[numCard],
-            cId = cardId[numCard]
+            cId = cardId[numCard],
+            cColor = cardColor[numCard]
         )
  
         with open(imageFilePath, mode="w", encoding="utf-8") as text:
@@ -83,9 +87,22 @@ def exportPng(pngFilePath,imageFilePath):
     options = '--batch-process --export-type=png'
     os.system('inkscape ' + imageFilePath + ' --export-filename=' + pngFilePath + ' ' + options)
 
+def getCardColor(cardType):
+    if cardType == "celebrity":
+        return "#989898"
+    elif cardType == "defense":
+        return "#1eb72a"
+    elif cardType == "event":
+        return "#8234a9"
+    elif cardType == "offense":
+        return "#b71e1e"
+    else:
+        return "#1e7ab7"
+
+
 def main(): 
-    cardTitle, cardDescription, cardType, numberOfCards, cardId = getCards()
-    renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId)
+    cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor = getCards()
+    renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId,cardColor)
 
     
 ## END FUNCTIONS ##
