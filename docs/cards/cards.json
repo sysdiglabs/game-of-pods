@@ -570,7 +570,7 @@
         {
           "when": "always",
           "type": "protect",
-          "target": 
+          "target":
             {
               "who": "me",
               "type": ["cluster"],
@@ -642,7 +642,7 @@
     {
       "id": "disaster_recovery",
       "title": "Disaster Recovery",
-      "description": "Your main cloud region has lost a data center. Pick X cards from the destroyed clusters pile, where X is the number of your clusters destroyed since your last turn. Put them in your cloud face up.",
+      "description": "Your main cloud region burns. Pick X cards from the destroyed clusters pile, where X is the number of your clusters destroyed since your last turn. Put them in your cloud face up.",
       "units": 2,
       "type": "defense"
     },
@@ -902,7 +902,7 @@
     {
       "id": "paul_cormier",
       "title": "Paul Cormier",
-      "description": "When Paul enters the cloud, steal up to 2 clusters from opponents. You can not steal their last cluster. At the start of your turn, if you control 2 or less clusters, destroy all your clusters.",
+      "description": "When Paul enters the cloud, steal up to 2 clusters. You can not steal a player last cluster. At the start of your turn, if you control 2 or less clusters, destroy all your clusters.",
       "units": 1,
       "type": "celebrity",
       "label": ["opensource"]
@@ -1065,7 +1065,7 @@
     {
       "id": "ipo",
       "title": "IPO",
-      "description": "Party night on bencer's new yacht. Each player draws one card. The player(s) with the most cards then discard 3 cards.",
+      "description": "Party night on bencer's new yacht! Each player draws one card. The player(s) with the most cards then discard 3 cards.",
       "units": 1,
       "type": "event"
     }
