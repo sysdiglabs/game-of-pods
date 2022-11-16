@@ -581,7 +581,6 @@
       "id": "external_auditory",
       "title": "External Auditory",
       "description": "With the help of an external auditor, you implemented several security compliance. You will not receive damages in your clusters for in the next round.",
-
       "units": 2,
       "type": "defense",
       "actions": [
@@ -628,7 +627,7 @@
       "description": "You install Falco in your clusters for runtime security. Whenever one of your clusters is destroyed, draw a card.",
       "units": 1,
       "type": "tech",
-      "label": ["opensource"],
+      "label": ["opensource","microservice"],
       "actions": [
         {
           "when": "on_my_cluster_remove",
@@ -707,6 +706,38 @@
       ]
     },
     {
+      "id": "java_servlet",
+      "title": "Java Servlet",
+      "description": "At the start of your turn, an opponent of your choice discards a card.",
+      "units": 1,
+      "type": "tech",
+      "label": ["java"]
+    },
+    {
+      "id": "prometheus",
+      "title": "Prometheus Monitoring",
+      "description": "In your draw step, look at the top three cards of the deck. Draw one, then shuffle the deck.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource","microservice"]
+    },
+    {
+      "id": "sysdig_monitor",
+      "title": "Sysdig Monitor",
+      "description": "You contract Sysdig Secure. At the start of your turn, an opponent of your choice reveals a cluster.",
+      "units": 1,
+      "type": "tech",
+      "label": ["sysdig"]
+    },
+    {
+      "id": "helm",
+      "title": "Helm Deployments",
+      "description": "You use Helm to automate your deployments. At the start of your turn, an opponent of your choice reveals a cluster.",
+      "units": 1,
+      "type": "tech",
+      "label": ["sysdig"]
+    },
+    {
       "id": "melon_usk",
       "title": "Melon Usk",
       "description": "A billionaire buys the cloud, and while trying to reduce costs, destroys all microservices.",
@@ -730,6 +761,14 @@
           "type": "autodestroy"
         }
       ]
+    },
+    {
+      "id": "loris_degioanni",
+      "title": "Loris Degioanni",
+      "description": "When it enters the cloud, choose one Cluster provider. Clusters of that provider cannot be destroyed as long as Loris is in the cloud.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["opensource"]
     },
     {
       "id": "bill_gates",
@@ -786,6 +825,22 @@
             }
         }
       ]
+    },
+    {
+      "id": "matt_hicks",
+      "title": "Matt Hicks",
+      "description": "When it enters the cloud, steal up to two clusters from opponents of your choice. You can not steal their last cluster. Quorum: In your next turn, if you control 2 or less clusters, destroy all your clusters.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["opensource"]
+    },
+    {
+      "id": "sundar_pichai",
+      "title": "Sundar Pichai",
+      "description": "Steal half of the clusters (rounded down) from an opponent. In your next turn, if you are the player that controls the most clusters, destroy two of your clusters.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["corporation"]
     },
     {
       "id": "linus_torvalds",
@@ -853,7 +908,7 @@
             {
               "who": "all",
               "type": ["tech","celebrity"],
-              "label": ["corporate"],
+              "label": ["corporation"],
               "select": "all"
             }
         },
