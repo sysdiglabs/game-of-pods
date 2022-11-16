@@ -11,7 +11,7 @@ from reportlab.graphics import renderPDF
 
 cardsDefinitionFile = "cards.json"
 templatePath = "templates/"
-templateFile = templatePath + "cards-template.md"
+templateFile = templatePath + "card_template.svg"
 imagesPath = "../../card-images/"
 exportsPath = "exports/"
 pdfsPath = exportsPath + "pdfs/"
@@ -32,17 +32,17 @@ def getCards():
         numberOfCards = len(cardsFile['cards'])
         print('INFO: Total number of cards found in ' + cardsDefinitionFile + ' : ' + str(numberOfCards))
         for numCard in range(numberOfCards):
-            id = cardsFile['cards'][numCard]['id']
+            cId = cardsFile['cards'][numCard]['id']
             cTitle = cardsFile['cards'][numCard]['title']
             cDescription = cardsFile['cards'][numCard]['description']
             cType = cardsFile['cards'][numCard]['type']
             
-            checkImages(id)
+            checkImages(cId)
 
             cardTitle.append(cTitle)
             cardDescription.append(cDescription)
             cardType.append(cType)
-            cardId.append(id)
+            cardId.append(cId)
         return cardTitle, cardDescription, cardType, numberOfCards, cardId
 
 def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
@@ -58,13 +58,14 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId):
         content = template.render(
             title = cardTitle[numCard],
             description = cardDescription[numCard],
-            type = cardType[numCard]
+            type = cardType[numCard],
+            cId = cardId[numCard]
         )
         with open(imageFilePath, mode="w", encoding="utf-8") as text:
             text.write(content)
             print("wrote..." + imageFilePath)
 
-        exportPdf(pdfFilePath,imageFilePath)
+        #exportPdf(pdfFilePath,imageFilePath)
 
 def checkImages(cardId):
     image = imagesPath + cardId + ".png"
@@ -78,7 +79,7 @@ def exportPdf(pdfFilePath,imageFilePath):
     print(os.path.exists(imageFilePath))
     print(pdfFilePath)
 
-    options = '--export-area-drawing --batch-process --export-type=pdf'
+    options = '--without-gui --export-area-drawing --batch-process --export-type=pdf'
     os.system('inkscape ' + imageFilePath + ' --export-filename=' + pdfFilePath + ' ' + options)
 
 def main(): 
