@@ -307,7 +307,7 @@
     {
       "id": "gcp_openshift_vulnerability",
       "title": "Exploit Google Cloud/OpenShift vulnerability",
-      "description": "Reveal target cluster. If it's a Google Cloud or Azure cluster, destroy it.",
+      "description": "Reveal target cluster. If it's a Google Cloud or OpenShift cluster, destroy it.",
       "units": 1,
       "type": "offense",
       "actions": [
