@@ -51,6 +51,7 @@ def getCards():
             cardId.append(cId)
             cardColor.append(cColor)
             cardLabels.append(cLabels)
+
         return cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels
 
 def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels):
@@ -70,7 +71,7 @@ def renderCards(cardTitle, cardDescription, cardType, numberOfCards, cardId, car
             type = cardType[numCard],
             cId = cardId[numCard],
             cColor = cardColor[numCard],
-            cLabels = cardLabels
+            cLabels = cardLabels[numCard]
         )
  
         with open(imageFilePath, mode="w", encoding="utf-8") as text:
@@ -107,10 +108,10 @@ def getCardColor(cardType):
         return "#1e7ab7"
 
 def getLabelsColor(labels):
-    labels = {} 
+    labelsOpacity = {} 
     for label in availableLabels:
-        labels[label] = 1 if label in labels else 0
-    return labels
+        labelsOpacity[label] = 1 if label in labels else 0
+    return labelsOpacity
 
 def main(): 
     cardTitle, cardDescription, cardType, numberOfCards, cardId, cardColor, cardLabels = getCards()
