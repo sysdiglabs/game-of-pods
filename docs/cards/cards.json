@@ -15,7 +15,7 @@
       ]
     },
     {
-      "id": "aws_cluster",
+      "id": "azure_cluster",
       "title": "Azure Cluster",
       "description": "",
       "units": 2,
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "id": "aws_cluster",
+      "id": "gcp_cluster",
       "title": "Google Cloud Cluster",
       "description": "",
       "units": 2,
@@ -530,8 +530,8 @@
       "type": "offense"
     },
     {
-      "id": "cloud_ofuscation",
-      "title": "Cloud Ofuscation",
+      "id": "cloud_obfuscation",
+      "title": "Cloud Obfuscation",
       "description": "Your security team has implemented a set of actions to prevent fingerprinting of your clusters. All the cluster cards are again hidden and you can shuffle them.",
       "units": 2,
       "type": "defense",
@@ -634,6 +634,48 @@
           "type": "autodestroy"
         }
       ]
+    },
+    {
+      "id": "container_forensics",
+      "title": "Container Forensics",
+      "description": "You have better skills now to perform forensic analysis in your containers. Skip the draw step; Until your next turn, prevent all damage to your clusters.",
+      "units": 2,
+      "type": "defense"
+    },
+    {
+      "id": "backup",
+      "title": "Backup",
+      "description": "A good backup policy saves you from disasters. Pick one cluster from the discard pile and put it in your cloud.",
+      "units": 2,
+      "type": "defense"
+    },
+    {
+      "id": "cloud_best_practices",
+      "title": "Cloud Best Practices",
+      "description": "You follow the best practices and read the manuals. If you have no techs deployed, draw two cards.",
+      "units": 2,
+      "type": "defense"
+    },
+    {
+      "id": "ml_model_detection",
+      "title": "Machine Learning Model Detection",
+      "description": "You implement detection based on Machine Learning. Choose one opponent and until your next turn, attacks from that opponent to your clusters have no effect.",
+      "units": 2,
+      "type": "defense"
+    },
+    {
+      "id": "image_scanning",
+      "title": "Image Scanning",
+      "description": "You scan all the images of your containers. You can look the cards of another player, including one hidden cluster.",
+      "units": 2,
+      "type": "defense"
+    },
+    {
+      "id": "disaster_recovery",
+      "title": "Disaster Recovery",
+      "description": "Pick X cluster cards from the destroyed clusters pile, being X the number of your clusters destroyed during this round. Put them back in your cloud face up.",
+      "units": 2,
+      "type": "defense"
     },
     {
       "id": "falco",
@@ -980,6 +1022,76 @@
           "type": "autodestroy"
         }
       ]
+    },
+    {
+      "id": "kraken",
+      "title": "The Kraken",
+      "description": "A huge mythological creature appears and cuts the undersea optical cables that provide global internet. Each player with the most clusters in the cloud destroys one cluster of their own.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "useast_down",
+      "title": "US-East Down",
+      "description": "It's always the DNS... and US-East. The current player destroys one of their clusters.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "cloud-misconfiguration",
+      "title": "Cloud Misconfiguration",
+      "description": "The cloud providers messed up the configuration and mixed clusters from different customers. Shuffle all the clusters in play. Each player plays them face down. Each player reveals one cluster",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "new_vulnerability_disclosure",
+      "title": "New Vulnerability Disclosure",
+      "description": "The current player may pick up one defense card from the discard pile. If there are none, the active player destroys one of his/her clusters.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "hardware_recommissioning",
+      "title": "Hardware Recommissioning",
+      "description": "Shuffle cards from the discard pile back into the deck.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "compliance_audit",
+      "title": "Compliance audit",
+      "description": "Each player takes a card from their hand and passes it face down to the next player. If a player has no cards in hand, he does not pass anything.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "crashloopbackoff",
+      "title": "CrashLoopBackOff",
+      "description": "Shit happens, or so they say. No attacks can be played during next player's turn.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "crunch_time",
+      "title": "Crunch time",
+      "description": "Active player takes an extra turn after this one.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "system_shutdown",
+      "title": "System Shutdown Time",
+      "description": "OH NO! Your system has a failure, all the system went down, you'll lost all your cluster in three turns.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "funding_round",
+      "title": "Funding Round With Billionaires",
+      "description": "Investors are looking for new unicorns! Each player draws X cards, where X is 3 minus the number of clusters they control.",
+      "units": 1,
+      "type": "event"
     }
   ]
 }
