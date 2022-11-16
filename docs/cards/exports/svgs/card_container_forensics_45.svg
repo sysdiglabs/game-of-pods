@@ -16,7 +16,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
      id="namedview257"
-     pagecolor="#989898"
+     pagecolor="#1eb72a"
      bordercolor="#000000"
      borderopacity="0.25"
      inkscape:showpageshadow="2"
@@ -73,7 +73,7 @@
        y="0"><tspan
          x="219.63374"
          y="552.55394"
-         id="tspan3774">Paul Cormier
+         id="tspan3774">Container Forensics
 </tspan><tspan
          x="219.63374"
          y="585.88731"
@@ -92,7 +92,7 @@
          y="637.57117"
          id="tspan3780"><tspan
            style="font-size:20px"
-           id="tspan3778">When Paul enters the cloud, steal up to 2 clusters from opponents. You can not steal their last cluster. At the start of your turn, if you control 2 or less clusters, destroy all your clusters.
+           id="tspan3778">You have better skills now to perform forensic analysis in your containers. Skip the draw step; until your next turn, prevent all damage to your clusters.
 </tspan></tspan><tspan
          x="228.81836"
          y="663.09119"
@@ -114,7 +114,7 @@
        width="135.46666"
        height="135.46666"
        preserveAspectRatio="none"
-       xlink:href="../../../../card-images/paul_cormier.png"
+       xlink:href="../../../../card-images/container_forensics.png"
        id="image3412"
        x="0"
        y="0" /><text
@@ -183,7 +183,7 @@
            y="24.829182">JAVA</tspan></text></g><g
        id="label_opensource"
        transform="matrix(1.1975706,0,0,1.1975706,97.903613,-19.840358)"><rect
-         style="fill:#009de1;fill-opacity:1;stroke-width:1.74617"
+         style="fill:#009de1;fill-opacity:0;stroke-width:1.74617"
          id="rect4832"
          width="31.336023"
          height="6.4187026"
@@ -191,13 +191,13 @@
          y="20.005919"
          ry="0" /><text
          xml:space="preserve"
-         style="font-weight:bold;font-size:4.34432px;font-family:'Noto Sans Mono CJK TC';-inkscape-font-specification:'Noto Sans Mono CJK TC, Bold';fill:#ffffff;fill-opacity:1;stroke-width:1.28482"
+         style="font-weight:bold;font-size:4.34432px;font-family:'Noto Sans Mono CJK TC';-inkscape-font-specification:'Noto Sans Mono CJK TC, Bold';fill:#ffffff;fill-opacity:0;stroke-width:1.28482"
          x="3.1500235"
          y="24.829182"
          id="text4836"><tspan
            sodipodi:role="line"
            id="tspan4834"
-           style="fill:#ffffff;fill-opacity:1;stroke-width:1.28482"
+           style="fill:#ffffff;fill-opacity:0;stroke-width:1.28482"
            x="3.1500235"
            y="24.829182">OPEN SOURCE</tspan></text></g><g
        id="label_corporation"

@@ -32,17 +32,21 @@ def getCards():
 
     with open(cardsDefinitionFile, 'r') as cards:
         cardsFile = json.loads(cards.read())
-        numberOfCards = len(cardsFile['cards'])
+        cardDeck = []
+        for card in cardsFile["cards"]:
+            for n in range(0,card["units"]):
+                cardDeck.append(card)
+        numberOfCards = len(cardDeck)
         print('INFO: Total number of cards found in ' + cardsDefinitionFile + ' : ' + str(numberOfCards))
         for numCard in range(numberOfCards):
-            cId = cardsFile['cards'][numCard]['id']
-            cTitle = cardsFile['cards'][numCard]['title']
-            cDescription = cardsFile['cards'][numCard]['description']
-            cType = cardsFile['cards'][numCard]['type']
+            cId = cardDeck[numCard]['id']
+            cTitle = cardDeck[numCard]['title']
+            cDescription = cardDeck[numCard]['description']
+            cType = cardDeck[numCard]['type']
             cColor = getCardColor(cType)
-            if 'label' not in cardsFile['cards'][numCard].keys(): 
-                cardsFile['cards'][numCard]['label'] = []
-            cLabels = getLabelsColor(cardsFile['cards'][numCard]['label'])
+            if 'label' not in cardDeck[numCard].keys(): 
+                cardDeck[numCard]['label'] = []
+            cLabels = getLabelsColor(cardDeck[numCard]['label'])
             checkImages(cId)
 
             cardTitle.append(cTitle)
