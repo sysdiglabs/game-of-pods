@@ -3,6 +3,7 @@ import React from 'react';
 export function SyBoard({ ctx, G, moves }) {
   const onPlayCard = (card) => moves.playCard(card);
   const onDrawCard = () => moves.drawCard();
+  const onSelectCard = (card) => moves.selectCard(card);
 
   let winner = '';
   if (ctx.gameover) {
@@ -22,8 +23,18 @@ export function SyBoard({ ctx, G, moves }) {
     let isPlayerHandSelected = isCurrentPlayer && ctx.activePlayers[ctx.currentPlayer] === "play";
     let isPlayerBoardSelected = false;
 
+    let isSelectStage = ctx.activePlayers[ctx.currentPlayer] === "select";
     G.board[renderPlayer].forEach((card) => {
-      board.push(UpsideCard(card, null ));
+      let callback = null;
+      if (isSelectStage) {
+        let constraints = new Map(Object.entries(G.selection.target));
+        constraints.forEach((values, property) => {
+          if (values.includes(card[property])) { // TODO: Check also the value of others.
+            callback = () => onSelectCard(card);
+          }
+        });
+      }
+      board.push(UpsideCard(card, callback ));
     });
 
     G.hand[renderPlayer].forEach((card) => {
@@ -86,7 +97,7 @@ const currentSectionStyle = {
 
 function UpsideCard(card, onClick){
   return (
-    <div style={cardStyle} onClick={onClick}>
+    <div id={card['instance_id']} style={cardStyle} onClick={onClick}>
       <img src="http://placekitten.com/100/100" alt="card illustration"/>
       <div><b>{card.title}</b></div>
       <div>{card.description}</div>

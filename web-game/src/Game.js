@@ -6,6 +6,7 @@ export const SyGame = {
     hand: Array(player_count).fill([]),
     deck: buildDeck(),
     pendingActions: [],
+    selection: {},
   }),
 
   turn: {
@@ -19,6 +20,10 @@ export const SyGame = {
       },
       play: {
         moves: { playCard },
+        next: 'draw',
+      },
+      select: {
+        moves: { selectCard },
       }
     }
   },
@@ -41,7 +46,14 @@ function drawCard({ G, playerID, events }, card) {
 function playCard({ G, playerID, events }, card) {
   G.pendingActions = card.actions.concat(G.pendingActions);
   processNextAction({ G, playerID, events}, 'on_played', card);
-  events.endTurn();
+}
+
+function selectCard({ G, playerID, events }, card) {
+  G.selection.cards.push(card);
+  if (G.selection.cards.length >= G.selection.maxCards) {
+    events.setStage(G.selection.next);
+    processNextAction({ G, playerID, events}, 'on_played', G.selection.acting_card);
+  }
 }
 
 function processNextAction({ G, playerID, events }, when, card) {
@@ -51,6 +63,8 @@ function processNextAction({ G, playerID, events }, when, card) {
     if (next) {
       processNextAction({ G, playerID, events }, when, card);
     }
+  } else {
+    events.endTurn();
   }
 }
 
@@ -67,44 +81,83 @@ function processAction({ G, playerID, events }, when, action, card) {
 
 function action_autodestroy({ G, playerID, events}, action, card) {
   G.hand[playerID] = G.hand[playerID].filter(function(e) { return e.instance_id !== card.instance_id })
+  return true;
 }
 
 function action_place({ G, playerID, events}, action, card) {
   G.hand[playerID] = G.hand[playerID].filter(function(e) { return e.instance_id !== card.instance_id })
   G.board[playerID].push(card);
+  return true;
 }
 
-/*
-  {
-    "when": "on_played",
-    "type": "remove_or_reveal",
-    "target": 
-      {
-        "who": "others",
-        "type": ["cluster"],
-        "select": "one"
-      },
-    "condition_remove": 
-      {
-        "vendor": ["AWS"]
-      },
-    "condition_reveal": 
-      {
-        "vendor": ["Azure","GCP","OpenShift"]
-      }
-  }
-  */
 function action_remove_or_reveal({ G, playerID, events}, action, card) {
-  //G.hand[playerID] = G.hand[playerID].filter(function(e) { return e.instance_id !== card.instance_id })
-  // Set 
+  switch (G.selection.status) {
+    case 'selection_prepared': return action_remove_or_reveal_apply_selection({ G, playerID, events}, action, card);
+    default: return action_remove_or_reveal_prepare({ G, playerID, events}, action, card);
+  }
 }
 
-function action_remove_or_reveal_select_cards({ G, playerID, events}, action, card) {
+function action_remove_or_reveal_prepare({ G, playerID, events}, action, card) {
+  // Set the selectable card conditions.
+  resetSelection(G);
+  G.selection.maxCards = 1; // TODO: Read from target
+  G.selection.target = action.target;
+  G.selection.next = 'playCard';
+  G.selection.acting_card = card;
 
+  // Push the action back.
+  G.selection.status = 'selection_prepared';
+  G.pendingActions.unshift(action);
+
+  // Set stage to select cards.
+  events.setStage('select');
+
+  // Break the flow of action execution
+  return false;
 }
 
 function action_remove_or_reveal_apply_selection({ G, playerID, events}, action, card) {
+  G.selection.cards.forEach(card => {
+    let condition_remove = new Map(Object.entries(action.condition_remove));
+    condition_remove.forEach((values, property) => {
+      if (values.includes(card[property])) {
+        findAndEraseCardFromGame(G, card);
+      }
+    });
+  });
+  // TODO: Implement reveal
+  G.selection.cards.forEach(card => {
+    let condition_reveal = new Map(Object.entries(action.condition_reveal));
+    condition_reveal.forEach((values, property) => {
+      if (values.includes(card[property])) {
+        // TODO: REVEAL
+      }
+    });
+  });
+  return true;
+}
 
+function findAndEraseCardFromGame(G, card) {
+  G.board.forEach((board, player_index) => {
+    G.board[player_index] = board.filter(function(e) { return e.instance_id !== card.instance_id });
+    return;
+  });
+  G.hand.forEach((hand, player_index) => {
+    G.hand[player_index] = hand.filter(function(e) { return e.instance_id !== card.instance_id });
+    return;
+  });
+}
+
+function resetSelection(G) {
+  G.selection = {
+    status: '',
+    maxCards: 0,
+    target: {},
+    constraints: {},
+    cards: [],
+    next: '',
+    acting_card: null,
+  };
 }
 
 function buildDeck() {
