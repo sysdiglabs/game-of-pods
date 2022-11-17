@@ -84,11 +84,15 @@ If the **last cluster** from a player is destroyed, **that player is eliminated*
 Draw the top card from the deck. Your turn ends and now it’s the turn of the next player clockwise.
 
 ## Game zones
-Deck
-The cloud
-Discard pile
-Cluster discard pile
-Hand
+
+![Logo](images/instructions-original.png)
+
+* Deck
+* Cloud
+* Cluster Zone
+* Discard pile
+* Cluster discard pile
+* Hand
 
 
 
