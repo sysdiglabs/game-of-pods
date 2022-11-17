@@ -517,7 +517,7 @@
     {
       "id": "ransomware",
       "title": "Ransomware",
-      "description": "There's a new ransomware gang around. Another player may destroy a cluster they control. If he doesn't, he skips his next turn.",
+      "description": "There's a new ransomware gang around. Another player may destroy a cluster they control. If they don't, they skips his next turn.",
       "units": 1,
       "type": "offense"
     },
@@ -1053,7 +1053,7 @@
     {
       "id": "compliance_audit",
       "title": "Compliance audit",
-      "description": "Time to test if we did a good job. Each player takes a card from their hand and passes it face down to the next player. If a player has no cards in hand, he does not pass anything.",
+      "description": "Time to test if we did a good job. Each player takes a card from their hand and passes it face down to the next player. If a player has no cards in hand, they do not pass anything.",
       "units": 1,
       "type": "event"
     },
