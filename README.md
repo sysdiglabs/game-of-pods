@@ -55,11 +55,11 @@ During your turn:
 
 When the last cluster from a player is destroyed, that player is out of the game.
 
-## Play Personality or Tech cards
+## Play Personality or Tech cards
 
 You can play Personality or Tech card from your hand labeled as Personality (blue border). Put them in front of your clusters. Personality and Tech cards stay in play on your side unless destroyed or stolen by an opponent. Some of these cards will grant a benefit when they enter the Cloud and some of these will grant a benefit each of your turns, or while they are in play.
 
-You can play maximum one Personality and one Tech card per turn. This means that you can play one Personality and Tech card in the same turn.
+You can play **maximum one Personality and one Tech** card per turn. This means that you can play one Personality and Tech card in the same turn.
 
 Both Personalities and Tech may have a label indicating their allegiance, like:
 
@@ -74,11 +74,11 @@ Both Personalities and Tech may have a label indicating their allegiance, like:
 E.g: Loris has the Falco tag and open-source tag.
 E.g: Melon Usk has the corporation tag.
 
-## Play up to one Attack card
+## Play up to **one** Attack card
 Choose any card in your hand with the Attack type. 
 Some Attack cards target specific cluster types (AWS, GCP, Openshift or Azure). In that case, target a cluster and reveal it. If the cluster is of the type indicated in the Attack type, destroy it, putting in the discard pile. 
 
-If the last cluster from a player is destroyed, that player is eliminated.
+If the **last cluster** from a player is destroyed, **that player is eliminated**.
 
 ## Draw a card from the deck
 Draw the top card from the deck. Your turn ends and now it’s the turn of the next player clockwise.
