@@ -1,0 +1,1096 @@
+{"cards": 
+  [
+    {
+      "id": "aws_cluster",
+      "title": "AWS Cluster",
+      "description": "Powered by EKS.",
+      "units": 3,
+      "vendor": "AWS",
+      "type": "cluster",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "place"
+        }
+      ]
+    },
+    {
+      "id": "azure_cluster",
+      "title": "Azure Cluster",
+      "description": "Powered by AKS.",
+      "units": 3,
+      "vendor": "Azure",
+      "type": "cluster",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "place"
+        }
+      ]
+    },
+    {
+      "id": "gcp_cluster",
+      "title": "Google Cloud Cluster",
+      "description": "Powered by GKE.",
+      "units": 3,
+      "vendor": "GCP",
+      "type": "cluster",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "place"
+        }
+      ]
+    },
+    {
+      "id": "openshift_cluster",
+      "title": "OpenShift Cluster",
+      "description": "Powered by OpenShift.",
+      "units": 3,
+      "vendor": "OpenShift",
+      "type": "cluster",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "place"
+        }
+      ]
+    },
+    {
+      "id": "aws_vulnerability",
+      "title": "Exploit AWS vulnerability",
+      "description": "Let's set this S3 bucket open for good measure... Reveal target cluster. If it's an AWS cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["Azure","GCP","OpenShift"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "azure_vulnerability",
+      "title": "Exploit Azure vulnerability",
+      "description": "Just reuse the same password for ADFS, it's temporary anyway... Reveal target cluster. If it's an Azure cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["Azure"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","GCP","OpenShift"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "gcp_vulnerability",
+      "title": "Exploit Google Cloud vulnerability",
+      "description": "This should work, I copied all those key files from the documentation... Reveal target cluster. If it's a Google Cloud cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["GCP"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","Azure","OpenShift"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "openshift_vulnerability",
+      "title": "Exploit OpenShift vulnerability",
+      "description": "root password is hunter2, why are you asking? Reveal target cluster. If it's an AWS cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","Azure","GCP"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "aws_azure_vulnerability",
+      "title": "Exploit AWS/Azure vulnerability",
+      "description": "Reveal target cluster. If it's an AWS or Azure cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS","Azure"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["GCP","OpenShift"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "aws_gcp_vulnerability",
+      "title": "Exploit AWS/Google Cloud vulnerability",
+      "description": "Reveal target cluster. If it's an AWS or Google Cloud cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS","GCP"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["Azure","OpenShift"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "aws_openshift_vulnerability",
+      "title": "Exploit AWS/OpenShift vulnerability",
+      "description": "Reveal target cluster. If it's an AWS or OpenShift cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["AWS","OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["Azure","GCP"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "azure_openshift_vulnerability",
+      "title": "Exploit Azure/OpenShift vulnerability",
+      "description": "Reveal target cluster. If it's an Azure or OpenShift cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["Azure","OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","GCP"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "gcp_openshift_vulnerability",
+      "title": "Exploit Google Cloud/OpenShift vulnerability",
+      "description": "Reveal target cluster. If it's a Google Cloud or OpenShift cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["GCP","OpenShift"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","Azure"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "gcp_azure_vulnerability",
+      "title": "Exploit Google Cloud/Azure vulnerability",
+      "description": "Reveal target cluster. If it's a Google Cloud or Azure cluster, destroy it.",
+      "units": 2,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove_or_reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "condition_remove": 
+            {
+              "vendor": ["GCP","Azure"]
+            },
+          "condition_reveal": 
+            {
+              "vendor": ["AWS","OpenShift"]
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "phishing",
+      "title": "Phishing attack",
+      "description": "You perform a phishing attack to another player. You steal a random card from the other player's hand.",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "steal",
+          "target": 
+            {
+              "who": "another",
+              "type": ["tech","celebrity","defense","offense"],
+              "select": "one"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "competitor_offer",
+      "title": "Competitor's offer",
+      "description": "You make an offer they can't refuse. You steal a celebrity from another player. Enter the cloud effects do not trigger again.",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "steal",
+          "target": 
+            {
+              "who": "another",
+              "type": ["celebrity"],
+              "select": "one"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "stolen_credentials",
+      "title": "Stolen Credentials",
+      "description": "You manage to steal another player's cloud credentials. You steal a tech card from another player. Enter the cloud effects do not trigger again.",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "steal",
+          "target": 
+            {
+              "who": "another",
+              "type": ["tech"],
+              "select": "one"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "sql_injection",
+      "title": "SQL Injection",
+      "description": "You perform a SQL Injection attack to another player. You destroy all their database cards.",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "another",
+              "type": ["tech","celebrity"],
+              "label": ["database"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "supply_chain",
+      "title": "Supply Chain Attack",
+      "description": "You perform a supply chain attack to another player. You destroy all their open source cards.",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "another",
+              "type": ["tech","celebrity"],
+              "label": ["opensource"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "log4shell",
+      "title": "Log4Shell",
+      "description": "A massive vulnerability appears in Java affecting all the players. All Java cards in play are destroyed.",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "all",
+              "type": ["tech"],
+              "label": ["java"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "brute_force_attack",
+      "title": "Brute Force Attack",
+      "description": "You focus all your computing power on the target. Destroy one tech of your choice from another player.",
+      "units": 1,
+      "type": "offense"
+    },
+    {
+      "id": "ransomware",
+      "title": "Ransomware",
+      "description": "There's a new ransomware gang around. Another player may destroy a cluster they control. If they don't, they skips his next turn.",
+      "units": 1,
+      "type": "offense"
+    },
+    {
+      "id": "cloud_obfuscation",
+      "title": "Cloud Obfuscation",
+      "description": "Your security team has implemented measures to prevent fingerprinting of your clusters. All the cluster cards are again hidden and you can shuffle them.",
+      "units": 1,
+      "type": "defense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "hide",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "shuffle",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "cloud_migration",
+      "title": "Cloud Migration",
+      "description": "Your infra team has managed a migration to another cloud provider. You can exchange one of your cluster cards for one of another player.",
+      "units": 1,
+      "type": "defense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "exchange",
+          "mine": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "one"
+            },
+          "other":
+            {
+            "who": "others",
+            "type": ["cluster"],
+            "select": "one"
+            }
+          },
+          {
+            "when": "on_played",
+            "type": "autodestroy"
+          }
+      ]
+    },
+    {
+      "id": "external_audit",
+      "title": "External Audit",
+      "description": "With the help of an external auditor, you passed several security compliance tests. Until your next turn, your clusters can't be destroyed.",
+      "units": 1,
+      "type": "defense",
+      "actions": [
+        {
+          "when": "always",
+          "type": "protect",
+          "target":
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_new_turn",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "mfa",
+      "title": "MFA",
+      "description": "You enforce Multi-Factor Authentication on all your cloud accounts. You may draw two cards.",
+      "units": 1,
+      "type": "defense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "draw"
+        },
+        {
+          "when": "on_played",
+          "type": "draw"
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "container_forensics",
+      "title": "Container Forensics",
+      "description": "You have better skills now to perform forensic analysis in your containers. Skip the draw step; until your next turn, prevent all damage to your clusters.",
+      "units": 1,
+      "type": "defense"
+    },
+    {
+      "id": "backup",
+      "title": "Replicated Backups",
+      "description": "A good backup policy saves you from disasters. Pick one cluster from the destroyed clusters pile and put it in your cloud.",
+      "units": 1,
+      "type": "defense"
+    },
+    {
+      "id": "cloud_best_practices",
+      "title": "Cloud Best Practices",
+      "description": "You follow the best practices and read the manuals. If you have no techs deployed, draw two cards.",
+      "units": 1,
+      "type": "defense"
+    },
+    {
+      "id": "ml_model_detection",
+      "title": "Machine Learning Model Detection",
+      "description": "You implement detection based on Machine Learning. Choose another player: until your next turn, attacks from that player to your clusters have no effect.",
+      "units": 1,
+      "type": "defense"
+    },
+    {
+      "id": "image_scanning",
+      "title": "Image Scanning",
+      "description": "You scan all the images of your containers. You may look at the cards in target player's hand, and at up to one of target player's hidden clusters.",
+      "units": 1,
+      "type": "defense"
+    },
+    {
+      "id": "disaster_recovery",
+      "title": "Disaster Recovery",
+      "description": "Your main cloud region burns. Pick X cards from the destroyed clusters pile, where X is the number of your clusters destroyed since your last turn. Put them in your cloud face up.",
+      "units": 1,
+      "type": "defense"
+    },
+    {
+      "id": "falco",
+      "title": "Falco",
+      "description": "You install Falco in your clusters for runtime security. Whenever one of your clusters is destroyed, draw a card.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource","microservice"],
+      "actions": [
+        {
+          "when": "on_my_cluster_remove",
+          "type": "draw"
+        }
+      ]
+    },
+    {
+      "id": "falco_sidekick",
+      "title": "Falco Sidekick",
+      "description": "You install Falco Sidekick. If you control Falco, whenever one of your clusters is destroyed you may discard a card. If you do, put the destroyed cluster back in the cloud.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource","microservice"]
+    },
+    {
+      "id": "sysdig_secure",
+      "title": "Sysdig Secure",
+      "description": "Your clusters are protected by Sysdig Secure. At the start of every round, if you have any face up clusters, shuffle your clusters and put them face down.",
+      "units": 1,
+      "type": "tech",
+      "label": ["sysdig"],
+      "actions": [
+        {
+          "when": "on_new_turn",
+          "type": "hide",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_new_turn",
+          "type": "shuffle",
+          "target": 
+            {
+              "who": "me",
+              "type": ["cluster"],
+              "select": "all"
+            }
+        }
+      ]
+    },
+    {
+      "id": "mongo_db",
+      "title": "MongoDB",
+      "description": "MongoDB changes its license to a non open source one. At the start of your turn, a player of your choice reveals an attack card in their hand.",
+      "units": 1,
+      "type": "tech",
+      "label": ["microservice","database"],
+      "actions": [
+        {
+          "when": "on_new_turn",
+          "type": "reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "select": "one"
+            }
+        }
+      ]
+    },
+    {
+      "id": "nginx",
+      "title": "NGINX",
+      "description": "You deployed a reverse proxy in front of your application frontends. Your tech cards cannot be destroyed.",
+      "units": 1,
+      "type": "tech",
+      "label": ["microservice"],
+      "actions": [
+        {
+          "when": "always",
+          "type": "protect",
+          "target": 
+            {
+              "who": "me",
+              "type": ["tech"],
+              "select": "all"
+            }
+        }
+      ]
+    },
+    {
+      "id": "java_servlet",
+      "title": "Java Servlet",
+      "description": "Tried and tested application, although its memory requirements are absurd. At the start of your turn, another player of your choice discards a card.",
+      "units": 1,
+      "type": "tech",
+      "label": ["java"]
+    },
+    {
+      "id": "prometheus",
+      "title": "Prometheus Monitoring",
+      "description": "You installed Prometheus to collect the metrics of your kubernetes clusters. In your draw step, look at the top three cards of the deck. Pick one, then shuffle the deck.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource","microservice"]
+    },
+    {
+      "id": "sysdig_monitor",
+      "title": "Sysdig Monitor",
+      "description": "Your clusters are monitored by Sysdig Monitor. At the start of your turn, another player of your choice reveals a cluster.",
+      "units": 1,
+      "type": "tech",
+      "label": ["sysdig"]
+    },
+    {
+      "id": "helm",
+      "title": "Helm Deployments",
+      "description": "You use Helm to automate your deployments. You might play an additional attack per turn.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource"]
+    },
+    {
+      "id": "springboot",
+      "title": "SpringBoot",
+      "description": "You start converting your legacy application to modern frameworks. At the start of your turn, you may pick one card from the discard pile. If you do so, skip your drawing step.",
+      "units": 1,
+      "type": "tech",
+      "label": ["java","microservice"]
+    },
+    {
+      "id": "terraform",
+      "title": "Terraform",
+      "description": "You define all your infrastructure through terraform scripts. Once per turn, you may discard a card. If you do so, draw a card.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource"]
+    },
+    {
+      "id": "promcat",
+      "title": "PromCat.io",
+      "description": "You use the Prometheus exporters in PromCat.io to improve your observability with Prometheus. Discard effects no longer affect you.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource", "sysdig"]
+    },
+    {
+      "id": "postgresql",
+      "title": "PostgreSQL",
+      "description": "You add sharding and replication to your db. Once per turn, you may discard your hand. Shuffle the discard pile back into the deck. Draw back the number of cards you discarded.",
+      "units": 1,
+      "type": "tech",
+      "label": ["opensource", "database"]
+    },
+    {
+      "id": "honeypot",
+      "title": "Honeypot",
+      "description": "Your security team has set up a honeypot to catch hackers. If one of your clusters is going to be destroyed, destroy the honeypot instead.",
+      "units": 1,
+      "type": "tech",
+      "label": []
+    },
+    {
+      "id": "melon_usk",
+      "title": "Melon Usk",
+      "description": "A billionaire buys the cloud, and has creative ways of reducing costs. Destroy all microservices.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["corporation"],
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "all",
+              "type": ["tech"],
+              "label": ["microservice"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "loris_degioanni",
+      "title": "Loris Degioanni",
+      "description": "When Loris enters the cloud, choose one Cluster provider. Clusters of that provider cannot be destroyed as long as Loris is in the cloud.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["opensource"]
+    },
+    {
+      "id": "bill_gates",
+      "title": "Bill Gates",
+      "description": "All the other players reveal Azure clusters. When you destroy an OpenShift, Google Cloud or AWS cluster, draw a card.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["corporation"],
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "vendor": ["AWS","GCP","OpenShift"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "jeff_bezos",
+      "title": "Jeff Bezos",
+      "description": "All the other players reveal AWS clusters. At the start of your turn, you can discard a card and draw a new one.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["corporation"],
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "reveal",
+          "target": 
+            {
+              "who": "others",
+              "type": ["cluster"],
+              "vendor": ["Azure","GCP","OpenShift"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_new_turn_optional",
+          "type": "discard_and_draw",
+          "target": 
+            {
+              "who": "others",
+              "type": ["tech","celebrity","offense","defense"],
+              "select": "one"
+            }
+        }
+      ]
+    },
+    {
+      "id": "paul_cormier",
+      "title": "Paul Cormier",
+      "description": "When Paul enters the cloud, steal up to 2 clusters. You can't steal a player last cluster. At the start of your turn, if you control 2 or less clusters, you lose.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["opensource"]
+    },
+    {
+      "id": "sundar_pichai",
+      "title": "Sundar Pichai",
+      "description": "Steal half of the clusters (rounded down) from another player. In your next turn, if you are the player that controls the most clusters, destroy two of your clusters.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["corporation"]
+    },
+    {
+      "id": "linus_torvalds",
+      "title": "Linus Torvalds",
+      "description": "All corporation cards played by other players are removed.",
+      "units": 1,
+      "type": "celebrity",
+      "label": ["opensource"],
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "others",
+              "type": ["tech","celebrity","offense","defense"],
+              "label": ["corporation"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "government_mandate_corporation",
+      "title": "Government Mandate for Corporate Software",
+      "description": "The government of your country has made a law that restricts the use of open source software. All open source cards are removed.",
+      "units": 1,
+      "type": "event",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "all",
+              "type": ["tech","celebrity"],
+              "label": ["opensource"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "government_mandate_opensource",
+      "title": "Government Mandate for Open Source",
+      "description": "The government of your country has made a law that promotes the use of open source software. All corporate cards are removed.",
+      "units": 1,
+      "type": "event",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "show_card"
+        },
+        {
+          "when": "on_played",
+          "type": "remove",
+          "target": 
+            {
+              "who": "all",
+              "type": ["tech","celebrity"],
+              "label": ["corporation"],
+              "select": "all"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
+      "id": "kraken",
+      "title": "The Kraken",
+      "description": "A huge mythological creature appears and cuts the undersea cables. Each player with the most clusters in the cloud destroys one of their clusters.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "useast_down",
+      "title": "US-East Down",
+      "description": "It's always the DNS... and US-East. The current player destroys one of their clusters.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "cloud_misconfiguration",
+      "title": "Cloud Misconfiguration",
+      "description": "The cloud providers messed up. Shuffle all the clusters in play. Each player plays them face down. Each player reveals one cluster",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "new_vulnerability_disclosure",
+      "title": "New Vulnerability Disclosure",
+      "description": "A new vulnerability is found and POC start appearing. The current player may pick up one defense card from the discard pile. If there are none, they destroy one of their clusters.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "hardware_recommissioning",
+      "title": "Hardware Recommissioning",
+      "description": "Reduce, reuse, recycle. Shuffle cards from the discard pile back into the deck.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "compliance_audit",
+      "title": "Compliance audit",
+      "description": "Time to test if we did a good job. Each player takes a card from their hand and passes it face down to the next player. If a player has no cards in hand, they do not pass anything.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "crashloopbackoff",
+      "title": "CrashLoopBackOff",
+      "description": "Shit happens, or so they say. No attacks can be played during next player's turn.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "crunch_time",
+      "title": "Crunch time",
+      "description": "I love deadlines. I love the whooshing noise they make as they go by. Current player takes an extra turn after this one.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "system_shutdown",
+      "title": "System Shutdown Time",
+      "description": "OH NO! Your systems are reaching a critical temperature and will shutdown soon. You will lose all your clusters in three turns.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "funding_round",
+      "title": "Funding Round With Billionaires",
+      "description": "Investors are looking for new unicorns! Each player draws X cards, where X is 3 minus the number of clusters they control.",
+      "units": 1,
+      "type": "event"
+    },
+    {
+      "id": "ipo",
+      "title": "IPO",
+      "description": "Party night on bencer's new yacht! Each player draws one card. The player(s) with the most cards then discard 3 cards.",
+      "units": 1,
+      "type": "event"
+    }
+  ]
+}

@@ -1,9 +1,15 @@
 import React from 'react';
+import './cards.css';
 
 export function SyBoard({ ctx, G, moves }) {
   const onPlayCard = (card) => moves.playCard(card);
   const onDrawCard = () => moves.drawCard();
   const onSelectCard = (card) => moves.selectCard(card);
+
+  const ref = React.useRef(null);
+  const handleClick = () => {
+    ref.current?.scrollIntoView({behavior: 'smooth'});
+  };
 
   let winner = '';
   if (ctx.gameover) {
@@ -45,12 +51,20 @@ export function SyBoard({ ctx, G, moves }) {
       }
     });
 
-    let board_style = (isPlayerBoardSelected) ? currentSectionStyle : sectionStyle;
-    let hand_style = (isPlayerHandSelected) ? currentSectionStyle : sectionStyle;
+    // let board_style = (isPlayerBoardSelected) ? currentSectionStyle : sectionStyle;
+    // let hand_style = (isPlayerHandSelected) ? currentSectionStyle : sectionStyle;
+    //let board_style = (isPlayerBoardSelected) ? 'current-section-board' : 'no-current-section-board';
+    //let hand_style = (isPlayerHandSelected) ? 'current-section-board' : 'no-current-section-board';
     boards.push(
-      <div id="board-{ctx.currentPlayer}">
-        <div style={board_style}><p>Player {renderPlayer} board</p>{board}</div>
-        <div style={hand_style}><p>Player {renderPlayer} hand</p>{hand}</div>
+      <div id="board-{ctx.currentPlayer}" class="half-board">
+        <div className="section-board">
+          <p>Player {renderPlayer} board</p>
+          <div className="section-board-cards">{board}</div>
+        </div>
+        <div className={"section-board"}>
+          <p>Player {renderPlayer} hand</p>
+          <div className="section-board-cards">{hand}</div>
+          </div>
       </div>
     );
   }
@@ -61,12 +75,21 @@ export function SyBoard({ ctx, G, moves }) {
   let isDrawStage = ctx.activePlayers[ctx.currentPlayer] === "draw";
   let deck_style = (isDrawStage) ? currentSectionStyle : sectionStyle;
   return (
-    <div>
-      {boards}
-      <div id="deck">
-        <div style={deck_style}><p>Deck</p>{deck}</div>
+    <div class="bg">
+      <div class="board-header-container">
+        <div class="board-header"></div>
+        <div class="board-header-menu">
+          <div class="play-button" onClick={handleClick}>Play!</div>
+        </div>
       </div>
-      {winner}
+      <div ref={ref} class="board">
+        {boards[0]}
+        <div id="deck" class="deck-half">
+          <div style={deck_style}><p>Deck</p>{deck}</div>
+        </div>
+        {boards[1]}
+        {winner}
+      </div>
     </div>
   );
 }
@@ -83,28 +106,22 @@ const cardStyle = {
 
 const sectionStyle = {
   border: '1px solid #555',
-  padding: '5px',
-  margin: '5px',
-  textAlign: 'center',
 };
 
 const currentSectionStyle = {
   border: '5px solid #5A5',
-  padding: '5px',
-  margin: '5px',
-  textAlign: 'center',
 };
 
 function UpsideCard(card, onClick){
   return (
-    <div id={card['instance_id']} style={cardStyle} onClick={onClick}>
-      <img src="http://placekitten.com/100/100" alt="card illustration"/>
-      <div><b>{card.title}</b></div>
-      <div>{card.description}</div>
+    <div id={card['instance_id']} className='card-style' onClick={onClick}>
+      <img src={"cards-images/" + card.id + ".png"} alt="card illustration" width="100%" height="100%"/>
+      {/*<div><b>{card.title}</b></div>
+      <div>{card.description}</div>*/}
     </div>
   )
 }
 
 function DownCard(card, onClick){
-  return <div style={cardStyle} onClick={onClick} />
+  return <div className='card-style back-card' onClick={onClick} />
 }

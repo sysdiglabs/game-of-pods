@@ -1,3 +1,5 @@
+import cards from './cards.json'
+
 const player_count = 2; // TODO: Read from context
 
 export const SyGame = {
@@ -164,17 +166,20 @@ function buildDeck() {
   let deck = []
   var i = 0;
   for(; i < 10; i++){
-    let card = buildAWSClusterCard();
+    let card_import = cards.cards.find(card => card.id === 'aws_cluster');
+    let card = JSON.parse(JSON.stringify(card_import));
     card["instance_id"] = i;
     deck.push(card);
   }
   for(; i < 20; i++){
-    let card = buildAzureClusterCard();
+    let card_import = cards.cards.find(card => card.id === 'azure_cluster');
+    let card = JSON.parse(JSON.stringify(card_import));
     card["instance_id"] = i;
     deck.push(card);
   }
   for(; i < 30; i++){
-    let card = buildAWSVulnerabilityCard();
+    let card_import = cards.cards.find(card => card.id === 'aws_vulnerability');
+    let card = JSON.parse(JSON.stringify(card_import));
     card["instance_id"] = i;
     deck.push(card);
   }
@@ -199,6 +204,7 @@ function shuffle(array) {
 
   return array;
 }
+
 
 function buildAWSClusterCard(){
   return {
