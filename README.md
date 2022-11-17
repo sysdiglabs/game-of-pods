@@ -1,7 +1,7 @@
 # Cloud Royale (A Game of Pods)
 An open source game for cloud natives
 
-![Logo](images/logo.png)
+![Logo](images/instructions-original.png)
 # Obtaining the game
 You can download and print your set of cards [here](https://github.com/sysdiglabs/game-of-pods/tree/main/docs/cards/exports/printpdfs). It's free!!!
 
