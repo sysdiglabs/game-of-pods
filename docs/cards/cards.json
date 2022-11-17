@@ -390,9 +390,32 @@
       ]
     },
     {
+      "id": "competitor_offer",
+      "title": "Competitor's offer",
+      "description": "You make an offer they can't refuse. You steal a celebrity from another player. Enter the cloud effects do not trigger again.",
+      "units": 1,
+      "type": "offense",
+      "actions": [
+        {
+          "when": "on_played",
+          "type": "steal",
+          "target": 
+            {
+              "who": "another",
+              "type": ["celebrity"],
+              "select": "one"
+            }
+        },
+        {
+          "when": "on_played",
+          "type": "autodestroy"
+        }
+      ]
+    },
+    {
       "id": "stolen_credentials",
       "title": "Stolen Credentials",
-      "description": "You manage to steal another player's cloud credentials. You steal a tech card from another player's hand.",
+      "description": "You manage to steal another player's cloud credentials. You steal a tech card from another player. Enter the cloud effects do not trigger again.",
       "units": 1,
       "type": "offense",
       "actions": [
