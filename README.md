@@ -85,7 +85,7 @@ Draw the top card from the deck. Your turn ends and now it’s the turn of the n
 
 ## Game zones
 
-![Logo](images/instructions-original.png)
+![Logo](images/game_zones.jpg)
 
 * Deck
 * Cloud
