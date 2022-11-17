@@ -25,8 +25,8 @@ The regular cards can be:
 
 ## Preparing the game
 Each player receives:
-* 3 Cluster cards
-* 5 Regular cards
+* 3 Cluster cards in the table facing down
+* 5 Regular cards in the hand
 
 ## Playing
 The objective of the game is to eliminate all the clusters from other players.
