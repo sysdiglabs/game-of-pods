@@ -4,14 +4,15 @@ html, body, * {
   padding: 0;
 }
 
-.bg {
+#bg {
   width: 100vw;
   height: 100vh;
+  background-image: url("backboard.png");
 }
 
-.board-header-container {
-  width: 100vw;
-  height: 100vh;
+#board-header-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +34,7 @@ html, body, * {
   width: 25%;
   height: 75%;
   border-radius: 0px 20px 20px 0px;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.511);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +44,7 @@ html, body, * {
   border: 1px solid #555;
   border-radius: 4px;
   width:  120px;
-  height: 200px;
+  height: 180px;
   margin: 5px;
   padding: 5px;
   display: inline-block;
@@ -61,25 +62,30 @@ html, body, * {
 
 .play-button {
   padding: 30px;
-  border: 2px solid black;
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
   text-align: center;
   cursor: pointer;
-
 }
 
-.board {
-  width: calc(100vw - 40px);
-  height: calc(100vh - 40px);
-  margin: 20px;
-  display: flex;
-  flex-grow: 1;
+.play-button:hover {
+  border: 4px solid rgb(81, 255, 0);
+  color: rgb(81, 255, 0);
+  font-weight: bold;
+}
+
+#board {
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  padding: 20px;
+  display: none;
   justify-content: center;
   align-items: center;
 }
 
 .half-board {
   width: 50%;
-  height: 100%;
+  height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,7 +94,7 @@ html, body, * {
 
 .deck-half{
   height: 100%;
-  padding: 20px;
+  padding: 0px 20px 0px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,8 +102,8 @@ html, body, * {
 
 .section-board {
   width: 100%;
-  height: 50%;/*/calc(50%-20px);*/
-  margin: 0px 0px 10px 0px;
+  height: 50%;
+  border-radius: 20px;
   text-align: center;
   display: flex;
   justify-content: center;

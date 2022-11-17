@@ -9,6 +9,13 @@ export function SyBoard({ ctx, G, moves }) {
   const ref = React.useRef(null);
   const handleClick = () => {
     ref.current?.scrollIntoView({behavior: 'smooth'});
+    var head = document.getElementById('board-header-container')
+    head.style.display = 'none';
+    head.style.visibility = 'hidden';
+    var bg = document.getElementById('bg');
+    bg.style.backgroundImage = 'none';
+    var board = document.getElementById('board');
+    board.style.display = 'flex';
   };
 
   let winner = '';
@@ -75,14 +82,14 @@ export function SyBoard({ ctx, G, moves }) {
   let isDrawStage = ctx.activePlayers[ctx.currentPlayer] === "draw";
   let deck_style = (isDrawStage) ? currentSectionStyle : sectionStyle;
   return (
-    <div class="bg">
-      <div class="board-header-container">
+    <div id="bg">
+      <div id="board-header-container">
         <div class="board-header"></div>
         <div class="board-header-menu">
           <div class="play-button" onClick={handleClick}>Play!</div>
         </div>
       </div>
-      <div ref={ref} class="board">
+      <div ref={ref} id="board" hidden>
         {boards[0]}
         <div id="deck" class="deck-half">
           <div style={deck_style}><p>Deck</p>{deck}</div>
