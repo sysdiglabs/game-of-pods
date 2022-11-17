@@ -665,7 +665,7 @@
     {
       "id": "disaster_recovery",
       "title": "Disaster Recovery",
-      "description": "Your main cloud region burns. Pick X cards from the destroyed clusters pile, where X is the number of your clusters destroyed since your last turn. Put them in your cloud face up.",
+      "description": "Your cloud region burns. Pick X cards from the destroyed clusters pile, where X is the number of your clusters destroyed since your last turn. Put them in your cloud face up.",
       "units": 1,
       "type": "defense"
     },
