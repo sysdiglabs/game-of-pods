@@ -86,6 +86,15 @@ export function SyBoard({ ctx, G, moves }) {
       <div id="board-header-container">
         <div class="board-header"></div>
         <div class="board-header-menu">
+          <div id="board-header-menu-text-cont">
+            <p id="board-header-menu-text">
+            Cluster Royale is a game where you’ll take both the role of a cyber attacker
+            and cyber defender. The goal of the game is to defend your own clusters while
+            destroying (or stealing!) other players clusters. When a player controls no
+            clusters, he is removed from the game. The last player remaining wins the 
+            game, bragging rights and eternal glory in the cloud world!
+            </p>
+          </div>
           <div class="play-button" onClick={handleClick}>Play!</div>
         </div>
       </div>

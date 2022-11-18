@@ -6,7 +6,7 @@ export const SyGame = {
   setup: () => ({
     board: Array(player_count).fill([]),
     hand: Array(player_count).fill([]),
-    deck: buildDeck(),
+    deck: buildDeck(), //buildRandomDeck(),
     pendingActions: [],
     selection: {},
   }),
@@ -160,6 +160,19 @@ function resetSelection(G) {
     next: '',
     acting_card: null,
   };
+}
+
+function buildRandomDeck() {
+  let deck = []
+  let cardsy = cards.cards;
+  for (var i = 0; i < 100; i++) {
+    let ci = Math.random() * cardsy.length;
+    let card = JSON.parse(JSON.stringify(cardsy[ci]));
+    card["instance_id"] = i;
+    deck.push(card);
+  }
+  deck = shuffle(deck);
+  return deck;
 }
 
 function buildDeck() {
