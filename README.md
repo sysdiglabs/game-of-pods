@@ -11,6 +11,8 @@ The goal of the game is to defend your own clusters while destroying (or stealin
 When a player controls no clusters, he is removed from the game.  
 The last player remaining wins the game, bragging rights and eternal glory in the cloud world!
 
+https://github.com/sysdiglabs/game-of-pods/assets/111243030/0ffe123f-ca74-4c46-b822-9da7c59efa9a
+
 # Rules
 ## Players
 2 to 4 players
